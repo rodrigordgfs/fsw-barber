@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
       },
+      spacing: {
+        "container": "50rem"
+      }
     },
   },
   plugins: [],
