@@ -1,12 +1,22 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import path from "path";
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css"],
+  alias: {
+    "@": path.resolve(__dirname, "./"),
+    "~": path.resolve(__dirname, "./"),
+  },
+  app: {
+    head: {
+      title: "FSW Barber",
+    },
+  },
   modules: [
     "nuxt-icon",
-    "@nuxtjs/supabase",
+    // "@nuxtjs/supabase",
     "@pinia/nuxt",
-    "@vite-pwa/nuxt"
+    // "@vite-pwa/nuxt"
   ],
   postcss: {
     plugins: {
@@ -14,10 +24,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  runtimeConfig: {
-    public: {
-      bucketUrl: process.env.BUCKET_URL,
-    },
-  },
+  // runtimeConfig: {
+  //   public: {
+  //     bucketUrl: process.env.BUCKET_URL,
+  //   },
+  // },
   // supabase: { redirect: false },
-})
+});
