@@ -14,8 +14,11 @@ module.exports = {
         nunito: ["Nunito", "sans-serif"],
       },
       spacing: {
-        "container": "50rem"
-      }
+        container: "70rem",
+      },
+      backgroundImage: {
+        "hero-pattern": "url('/hero.png')",
+      },
     },
   },
   plugins: [],
