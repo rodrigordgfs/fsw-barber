@@ -11,7 +11,9 @@
         <p v-else class="text-white font-normal text-2xl">
           Olá, <span class="font-bold">Rodrigo</span>
         </p>
-        <p class="text-white font-normal text- mt-1">{{ currentDate }}</p>
+        <ClientOnly>
+          <p class="text-white font-normal text- mt-1">{{ currentDate }}</p>
+        </ClientOnly>
 
         <form @submit.prevent="" class="flex flex-row items-center gap-2 mt-12">
           <input
@@ -65,6 +67,10 @@
             <Slide v-for="barbershop in barbershops" :key="barbershop">
               <CardBarber :barbershop="barbershop" />
             </Slide>
+            <template #addons>
+              <Navigation />
+              <Navigation />
+            </template>
           </Carousel>
         </div>
       </div>
@@ -112,4 +118,20 @@ const currentDate = computed(() => {
 });
 </script>
 
-<style></style>
+<style>
+.carousel__prev,
+.carousel__next {
+  border-radius: 50%;
+  margin: 0 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #581c87 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+  filter: drop-shadow(0px 15px 30px rgba(51, 51, 51, 0.2));
+  box-shadow: 0px 15px 30px rgba(51, 51, 51, 0.2);
+}
+</style>
