@@ -5,13 +5,13 @@
   >
     <div class="max-w-container w-full my-16 flex flex-row gap-20">
       <div class="flex-1">
-        <p v-if="!isLogged" class="text-white font-normal text-2xl">
-          Olá, <span class="font-bold">Faça seu login</span>
-        </p>
-        <p v-else class="text-white font-normal text-2xl">
-          Olá, <span class="font-bold">Rodrigo</span>
-        </p>
         <ClientOnly>
+          <p v-if="!isUserLoggedIn" class="text-white font-normal text-2xl">
+            Olá, <span class="font-bold">Faça seu login</span>
+          </p>
+          <p v-else class="text-white font-normal text-2xl">
+            Olá, <span class="font-bold">{{ userFirstName }}</span>
+          </p>
           <p class="text-white font-normal text- mt-1">{{ currentDate }}</p>
         </ClientOnly>
 
@@ -29,34 +29,36 @@
           </button>
         </form>
 
-        <p class="uppercase font-bold text-sm text-zinc-400 mt-12">
-          Agendamentos
-        </p>
-        <div
-          class="flex flex-row items-center rounded-lg border border-zinc-600 bg-zinc-800 p-3 mt-5 hover:bg-zinc-900 transition-all cursor-pointer"
-        >
-          <div class="flex-1 flex flex-col border-r border-r-zinc-600">
-            <div>
-              <span
-                class="rounded-lg bg-purple-900 text-purple-300 font-bold text-xs px-2"
-                >Confirmado
-              </span>
-            </div>
-            <p class="text-white text-lg font-bold mt-3">Corte de Cabelo</p>
-            <div class="flex items-center flex-row gap-2 mt-2">
-              <img
-                class="w-6 h-6 rounded-full shadow"
-                src="https://picsum.photos/id/223/50"
-              />
-              <p class="text-white font-normal text-sm">Vintage Barber</p>
-            </div>
-          </div>
+        <div v-if="hasScheduling">
+          <p class="uppercase font-bold text-sm text-zinc-400 mt-12">
+            Agendamentos
+          </p>
           <div
-            class="ml-7 mr-4 text-white flex flex-col items-center justify-center font-normal"
+            class="flex flex-row items-center rounded-lg border border-zinc-600 bg-zinc-800 p-3 mt-5 hover:bg-zinc-900 transition-all cursor-pointer"
           >
-            <p class="text-xs">Fevereiro</p>
-            <p class="text-2xl">06</p>
-            <p class="text-xs">09:45</p>
+            <div class="flex-1 flex flex-col border-r border-r-zinc-600">
+              <div>
+                <span
+                  class="rounded-lg bg-purple-900 text-purple-300 font-bold text-xs px-2"
+                  >Confirmado
+                </span>
+              </div>
+              <p class="text-white text-lg font-bold mt-3">Corte de Cabelo</p>
+              <div class="flex items-center flex-row gap-2 mt-2">
+                <img
+                  class="w-6 h-6 rounded-full shadow"
+                  src="https://picsum.photos/id/223/50"
+                />
+                <p class="text-white font-normal text-sm">Vintage Barber</p>
+              </div>
+            </div>
+            <div
+              class="ml-7 mr-4 text-white flex flex-col items-center justify-center font-normal"
+            >
+              <p class="text-xs">Fevereiro</p>
+              <p class="text-2xl">06</p>
+              <p class="text-xs">09:45</p>
+            </div>
           </div>
         </div>
       </div>
@@ -81,7 +83,16 @@
 <script setup>
 import moment from "moment";
 
-const isLogged = ref(false);
+const user = useSupabaseUser();
+const schedule = ref([true]);
+
+const isUserLoggedIn = computed(() => !!user.value);
+const userFirstName = computed(
+  () => String(user.value.identities[0].identity_data.full_name).split(" ")[0]
+);
+const hasScheduling = computed(
+  () => isUserLoggedIn && schedule.value.length > 0
+);
 
 const barbershops = ref([
   {
