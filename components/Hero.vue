@@ -66,7 +66,10 @@
         <p class="uppercase font-bold text-sm text-zinc-400">Recomendados</p>
         <div class="w-full mt-5 flex flex-row">
           <Carousel :items-to-show="2.3" class="w-full">
-            <Slide v-for="barbershop in barbershops" :key="barbershop">
+            <Slide
+              v-for="barbershop in recomendedBarbershops"
+              :key="barbershop"
+            >
               <CardBarber :barbershop="barbershop" />
             </Slide>
             <template #addons>
@@ -82,95 +85,39 @@
 
 <script setup>
 import moment from "moment";
+import { useBarbershopStore } from "~/stores/barbershop";
 
-const user = useSupabaseUser();
+const useUser = useSupabaseUser();
+const useBarbershop = useBarbershopStore();
+
 const schedule = ref([]);
+const recomendedBarbershops = ref([]);
 
-const isUserLoggedIn = computed(() => !!user.value);
+const isUserLoggedIn = computed(() => !!useUser.value);
 const userFirstName = computed(
-  () => String(user.value.identities[0].identity_data.full_name).split(" ")[0]
+  () =>
+    String(useUser.value.identities[0].identity_data.full_name).split(" ")[0]
 );
 const hasScheduling = computed(
   () => isUserLoggedIn && schedule.value.length > 0
 );
 
-const barbershops = ref([
-  {
-    id: 1,
-    name: "Vintage Barber",
-    address: "Rua das Flores, 123",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.5,
-    image: "https://picsum.photos/id/223/200",
-  },
-  {
-    id: 2,
-    name: "Barbearia do Zé",
-    address: "Rua das Rosas, 456",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.8,
-    image: "https://picsum.photos/id/222/200",
-  },
-  {
-    id: 3,
-    name: "Barbearia do João",
-    address: "Rua das Margaridas, 789",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.2,
-    image: "https://picsum.photos/id/225/200",
-  },
-  {
-    id: 1,
-    name: "Vintage Barber",
-    address: "Rua das Flores, 123",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.5,
-    image: "https://picsum.photos/id/223/200",
-  },
-  {
-    id: 2,
-    name: "Barbearia do Zé",
-    address: "Rua das Rosas, 456",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.8,
-    image: "https://picsum.photos/id/222/200",
-  },
-  {
-    id: 3,
-    name: "Barbearia do João",
-    address: "Rua das Margaridas, 789",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.2,
-    image: "https://picsum.photos/id/225/200",
-  },
-  {
-    id: 1,
-    name: "Vintage Barber",
-    address: "Rua das Flores, 123",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.5,
-    image: "https://picsum.photos/id/223/200",
-  },
-  {
-    id: 2,
-    name: "Barbearia do Zé",
-    address: "Rua das Rosas, 456",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.8,
-    image: "https://picsum.photos/id/222/200",
-  },
-]);
-
 const currentDate = computed(() => {
   return moment().locale("pt-br").format("dddd, D [de] MMMM");
+});
+
+onBeforeMount(async () => {
+  try {
+    await useBarbershop.getAllRecomendedBarbershops();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+onMounted(() => {
+  watchEffect(() => {
+    recomendedBarbershops.value = useBarbershop.recomendedBarbershops;
+  });
 });
 </script>
 

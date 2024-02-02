@@ -11,17 +11,18 @@ datasource db {
 }
 
 model Barbershop {
-  id        String   @id @default(uuid())
-  name      String
-  address   String
-  image     String
-  about     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(uuid())
+  name        String
+  address     String   @db.VarChar(55)
+  image       String
+  about       String
+  recommended Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   // barbers   Barber[]
   // services  Service[]
   // phones    Phone[]
-  rates     Rates[]
+  rates       Rates[]
 }
 
 model Rates {

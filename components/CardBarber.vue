@@ -4,22 +4,22 @@
   >
     <div class="relative">
       <img
-        class="m-3 rounded-xl h-36 w-[calc(100%-24px)] bg-cover"
-        :src="barbershop.image"
+        class="m-3 rounded-xl h-36 w-[calc(100%-24px)] object-cover"
+        :src="runtimeConfig.public.bucketUrl + '/' + barbershop.image"
       />
       <div>
         <p
           class="absolute top-4 left-4 py-1 flex fle-row gap-1 items-center bg-purple-900 bg-opacity-70 text-purple-300 font-bold text-xs px-2 rounded-2xl"
         >
           <Icon name="ic:baseline-star-rate" size="12" />
-          {{ barbershop.rating }}
+          {{ rate }}
         </p>
       </div>
     </div>
     <div class="m-3">
-      <p class="text-white text-base font-bold">Vintage Barber</p>
+      <p class="text-white text-base font-bold">{{ barbershop.name }}</p>
       <p class="text-zinc-400 text-sm font-normal mt-1">
-        Avenida São Sebastião, 357, São Paulo
+        {{ barbershop.address }}
       </p>
     </div>
     <button
@@ -33,6 +33,19 @@
 <script setup>
 const props = defineProps({
   barbershop: Object,
+});
+
+const runtimeConfig = useRuntimeConfig();
+
+const rate = computed(() => {
+  console.log();
+  if (props.barbershop?.rates?.length > 0) {
+    const count = props.barbershop.rates.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue.rate;
+    }, 0);
+    return Number(count / props.barbershop.rates.length).toFixed(1);
+  }
+  return 5.0;
 });
 </script>
 

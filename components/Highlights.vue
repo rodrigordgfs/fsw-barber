@@ -17,80 +17,20 @@
 </template>
 
 <script setup>
-const barbershops = ref([
-  {
-    id: 1,
-    name: "Vintage Barber",
-    address: "Rua das Flores, 123",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.5,
-    image: "https://picsum.photos/id/223/200",
-  },
-  {
-    id: 2,
-    name: "Barbearia do Zé",
-    address: "Rua das Rosas, 456",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.8,
-    image: "https://picsum.photos/id/222/200",
-  },
-  {
-    id: 3,
-    name: "Barbearia do João",
-    address: "Rua das Margaridas, 789",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.2,
-    image: "https://picsum.photos/id/225/200",
-  },
-  {
-    id: 1,
-    name: "Vintage Barber",
-    address: "Rua das Flores, 123",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.5,
-    image: "https://picsum.photos/id/223/200",
-  },
-  {
-    id: 2,
-    name: "Barbearia do Zé",
-    address: "Rua das Rosas, 456",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.8,
-    image: "https://picsum.photos/id/222/200",
-  },
-  {
-    id: 3,
-    name: "Barbearia do João",
-    address: "Rua das Margaridas, 789",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.2,
-    image: "https://picsum.photos/id/225/200",
-  },
-  {
-    id: 1,
-    name: "Vintage Barber",
-    address: "Rua das Flores, 123",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.5,
-    image: "https://picsum.photos/id/223/200",
-  },
-  {
-    id: 2,
-    name: "Barbearia do Zé",
-    address: "Rua das Rosas, 456",
-    city: "São Paulo",
-    state: "SP",
-    rating: 4.8,
-    image: "https://picsum.photos/id/222/200",
-  },
-]);
+const useBarbershop = useBarbershopStore();
+const barbershops = ref([]);
+
+onBeforeMount(async () => {
+  try {
+    await useBarbershop.getAllBarbershops();
+  } catch (error) {}
+});
+
+onMounted(() => {
+  watchEffect(() => {
+    barbershops.value = useBarbershop.barbershops;
+  });
+});
 </script>
 
 <style></style>
