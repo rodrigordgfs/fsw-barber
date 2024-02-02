@@ -7,28 +7,29 @@ export default defineNuxtConfig({
     "@": path.resolve(__dirname, "./"),
     "~": path.resolve(__dirname, "./"),
   },
+  modules: [
+    "nuxt-icon",
+    "@nuxtjs/supabase",
+    "@pinia/nuxt",
+    // "@vite-pwa/nuxt",
+    "vue3-carousel-nuxt",
+  ],
+  pages: true,
+  runtimeConfig: {
+    public: {
+      bucketUrl: process.env.BUCKET_URL,
+    },
+  },
+  supabase: { redirect: false },
   app: {
     head: {
       title: "FSW Barber",
     },
   },
-  modules: [
-    "nuxt-icon",
-    // "@nuxtjs/supabase",
-    "@pinia/nuxt",
-    // "@vite-pwa/nuxt",
-    "vue3-carousel-nuxt",
-  ],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  // runtimeConfig: {
-  //   public: {
-  //     bucketUrl: process.env.BUCKET_URL,
-  //   },
-  // },
-  // supabase: { redirect: false },
 });

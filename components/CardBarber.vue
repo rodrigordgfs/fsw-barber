@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-zinc-900 border border-zinc-600 rounded-2xl flex flex-col w-56"
+    class="bg-zinc-800 border border-zinc-600 rounded-2xl flex flex-col w-56"
   >
     <div class="relative">
       <img
@@ -23,7 +23,7 @@
       </p>
     </div>
     <button
-      class="bg-zinc-800 text-white font-bold rounded-lg mx-3 mb-3 p-2 hover:bg-zinc-700 transition-all cursor-pointer"
+      class="bg-zinc-900 text-white font-bold rounded-lg mx-3 mb-3 p-2 hover:bg-zinc-700 transition-all cursor-pointer"
     >
       Reservar
     </button>

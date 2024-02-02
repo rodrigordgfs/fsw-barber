@@ -33,7 +33,7 @@
           Agendamentos
         </p>
         <div
-          class="flex flex-row items-center rounded-lg border border-zinc-600 bg-zinc-900 p-3 mt-5 hover:bg-zinc-800 transition-all cursor-pointer"
+          class="flex flex-row items-center rounded-lg border border-zinc-600 bg-zinc-800 p-3 mt-5 hover:bg-zinc-900 transition-all cursor-pointer"
         >
           <div class="flex-1 flex flex-col border-r border-r-zinc-600">
             <div>
@@ -110,6 +110,51 @@ const barbershops = ref([
     state: "SP",
     rating: 4.2,
     image: "https://picsum.photos/id/225/200",
+  },
+  {
+    id: 1,
+    name: "Vintage Barber",
+    address: "Rua das Flores, 123",
+    city: "São Paulo",
+    state: "SP",
+    rating: 4.5,
+    image: "https://picsum.photos/id/223/200",
+  },
+  {
+    id: 2,
+    name: "Barbearia do Zé",
+    address: "Rua das Rosas, 456",
+    city: "São Paulo",
+    state: "SP",
+    rating: 4.8,
+    image: "https://picsum.photos/id/222/200",
+  },
+  {
+    id: 3,
+    name: "Barbearia do João",
+    address: "Rua das Margaridas, 789",
+    city: "São Paulo",
+    state: "SP",
+    rating: 4.2,
+    image: "https://picsum.photos/id/225/200",
+  },
+  {
+    id: 1,
+    name: "Vintage Barber",
+    address: "Rua das Flores, 123",
+    city: "São Paulo",
+    state: "SP",
+    rating: 4.5,
+    image: "https://picsum.photos/id/223/200",
+  },
+  {
+    id: 2,
+    name: "Barbearia do Zé",
+    address: "Rua das Rosas, 456",
+    city: "São Paulo",
+    state: "SP",
+    rating: 4.8,
+    image: "https://picsum.photos/id/222/200",
   },
 ]);
 

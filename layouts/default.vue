@@ -1,10 +1,13 @@
 <template>
-  <div id="DefaultLayout">
+  <div id="DefaultLayout" class="overflow-auto">
     <Header />
     <slot />
+    <Footer />
+    <ModalLogin />
+    <ModalLogout />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script setup></script>
 
 <style></style>
