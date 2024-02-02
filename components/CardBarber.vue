@@ -23,6 +23,7 @@
       </p>
     </div>
     <button
+      @click="openBarbershop(barbershop.id)"
       class="bg-zinc-900 text-white font-bold rounded-lg mx-3 mb-3 p-2 hover:bg-zinc-700 transition-all cursor-pointer"
     >
       Reservar
@@ -47,6 +48,10 @@ const rate = computed(() => {
   }
   return 5.0;
 });
+
+const openBarbershop = (id) => {
+  alert(id);
+};
 </script>
 
 <style></style>
