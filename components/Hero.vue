@@ -84,7 +84,7 @@
 import moment from "moment";
 
 const user = useSupabaseUser();
-const schedule = ref([true]);
+const schedule = ref([]);
 
 const isUserLoggedIn = computed(() => !!user.value);
 const userFirstName = computed(
