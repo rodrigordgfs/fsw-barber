@@ -5,19 +5,31 @@
       <p class="text-sm font-normal text-zinc-400 mt-2">
         Deseja realmente sair?
       </p>
-      <button
-        class="w-full bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-red-500 transition-all"
-        :disabled="isLogginOut"
-        @click="logout"
-      >
-        <template v-if="!isLogginOut">
-          <Icon name="material-symbols:exit-to-app" size="14" color="#FFF" />
-          <p class="text-sm font-bold">Sair</p></template
+      <div class="flex flex-row gap-2 mt-5">
+        <button
+          v-if="!isLogginOut"
+          class="w-1/2 bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 hover:bg-zinc-800 transition-all"
+          @click="useModal.toggleModalLogout"
         >
-        <template v-else>
-          <Icon name="eos-icons:bubble-loading" size="14" color="#FFF" />
-        </template>
-      </button>
+          <p class="text-sm font-bold">Cancelar</p>
+        </button>
+        <button
+          class="w-1/2 bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 hover:bg-red-500 transition-all"
+          :class="{
+            'w-full': isLogginOut,
+          }"
+          :disabled="isLogginOut"
+          @click="logout"
+        >
+          <template v-if="!isLogginOut">
+            <Icon name="material-symbols:exit-to-app" size="14" color="#FFF" />
+            <p class="text-sm font-bold">Sair</p></template
+          >
+          <template v-else>
+            <Icon name="eos-icons:bubble-loading" size="14" color="#FFF" />
+          </template>
+        </button>
+      </div>
     </div>
   </Modal>
 </template>
