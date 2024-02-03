@@ -159,7 +159,34 @@
             </ul>
           </div>
           <div class="border-t border-t-gray-600 my-5" />
-          <div class="text-white flex items-center justify-center">Soon</div>
+          <ul class="flex flex-col gap-3">
+            <ul class="flex flex-col gap-2">
+              <li
+                v-if="!useBarbershop.barbershopLoading"
+                class="flex flex-row items-center justify-between"
+                v-for="day in barbershop.days"
+              >
+                <p class="text-sm text-gray-400 font-normal">
+                  {{ translateDayOfWeek(day.day) }}
+                </p>
+                <p class="text-sm text-white font-normal">
+                  {{
+                    !day.open && !day.close
+                      ? "Fechado"
+                      : day.open + ` - ` + day.close
+                  }}
+                </p>
+              </li>
+              <LoaderSkeleton
+                v-else
+                v-for="index in 7"
+                class="mt-2"
+                :key="index"
+                width="100%"
+                height="20px"
+              />
+            </ul>
+          </ul>
           <div class="border-t border-t-gray-600 my-5" />
           <div class="flex flex-row items-center justify-between">
             <p class="text-sm text-white font-normal">Em parceria com</p>
@@ -177,6 +204,7 @@ import { useClipboard } from "@vueuse/core";
 const route = useRoute();
 const useBarbershop = useBarbershopStore();
 const runtimeConfig = useRuntimeConfig();
+const { translateDayOfWeek } = useTranslateDayOfWeek();
 const { copy } = useClipboard();
 
 const barbershop = ref({});

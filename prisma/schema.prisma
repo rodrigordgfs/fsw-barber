@@ -23,6 +23,7 @@ model Barbershop {
   phones      Phones[]
   rates       Rates[]
   services    Services[]
+  days        Days[]
 }
 
 model Rates {
@@ -50,6 +51,27 @@ model Services {
 model Phones {
   id           String     @id @default(uuid())
   number       String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  barbershopId String
+}
+
+enum Day {
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+}
+
+model Days {
+  id           String     @id @default(uuid())
+  day          Day
+  open         String     @default("")
+  close        String     @default("")
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)

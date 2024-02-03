@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   const barbershop = await prisma.barbershop.findUnique({
     where: { id },
-    include: { rates: true, phones: true, services: true },
+    include: { rates: true, phones: true, services: true, days: true },
   });
 
   return barbershop;
