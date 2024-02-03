@@ -6,8 +6,9 @@ export const useBarbershopStore = defineStore("barbershop", {
     recomendedBarbershops: [],
     recomendedBarbershopsLoading: true,
     barbershops: [],
-    barbershopsLoading: [],
+    barbershopsLoading: true,
     barbershop: null,
+    barbershopLoading: true,
   }),
   actions: {
     async getAllRecomendedBarbershops() {
@@ -31,7 +32,10 @@ export const useBarbershopStore = defineStore("barbershop", {
     },
 
     async getBarbershopById(id) {
-      const response = await useFetch(`/api/barbershop/${id}`);
+      this.barbershopLoading = true;
+      const response = await useFetch(`/api/barbershop/${id}`).finally(() => {
+        this.barbershopLoading = false;
+      });
       this.barbershop = response.data;
       return response.data;
     },
