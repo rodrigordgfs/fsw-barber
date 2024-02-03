@@ -1,5 +1,6 @@
 <template>
   <div id="DefaultLayout">
+    <BookMenu />
     <Header />
     <slot />
     <Footer />

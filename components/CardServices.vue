@@ -21,6 +21,7 @@
           }}
         </p>
         <button
+          @click="book"
           class="bg-zinc-800 rounded-lg py-2 px-4 text-sm text-white font-bold hover:bg-purple-900 transition-all"
         >
           Reservar
@@ -32,10 +33,15 @@
 
 <script setup>
 const runtimeConfig = useRuntimeConfig();
+const useBookMenu = useBookMenuStore();
 
 const props = defineProps({
   service: Object,
 });
+
+const book = () => {
+  useBookMenu.toggle();
+};
 </script>
 
 <style></style>
