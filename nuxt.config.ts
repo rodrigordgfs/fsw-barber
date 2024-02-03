@@ -11,8 +11,9 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxtjs/supabase",
     "@pinia/nuxt",
-    // "@vite-pwa/nuxt",
+    "@vite-pwa/nuxt",
     "vue3-carousel-nuxt",
+    "@nuxt/image",
   ],
   pages: true,
   runtimeConfig: {
@@ -33,4 +34,3 @@ export default defineNuxtConfig({
     },
   },
 });
- 

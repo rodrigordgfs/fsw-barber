@@ -3,7 +3,7 @@
     class="bg-zinc-900 border border-zinc-600 rounded-2xl flex flex-col w-56"
   >
     <div class="relative">
-      <img
+      <NuxtImg
         class="m-3 rounded-xl h-36 w-[calc(100%-24px)] object-cover"
         :src="runtimeConfig.public.bucketUrl + '/' + barbershop.image"
       />

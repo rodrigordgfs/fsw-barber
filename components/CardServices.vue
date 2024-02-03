@@ -2,7 +2,7 @@
   <div
     class="flex flex-row gap-3 bg-zinc-900 border border-gray-600 rounded-lg p-3"
   >
-    <img
+    <NuxtImg
       class="object-cover w-28 h-28 rounded-lg shadow"
       :src="runtimeConfig.public.bucketUrl + '/' + service.image"
     />

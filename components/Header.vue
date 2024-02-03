@@ -29,7 +29,7 @@
             @click="useModal.toggleModalLogout"
             class="flex flex-row items-center gap-2 py-2 px-4 hover:bg-zinc-900 rounded-lg cursor-pointer"
           >
-            <img class="rounded-full w-9 h-9 shadow" :src="userImage" />
+            <NuxtImg class="rounded-full w-9 h-9 shadow" :src="userImage" />
             <span class="font-bold text-sm text-white">{{ userName }}</span>
           </div>
           <template #fallback>

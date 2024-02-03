@@ -35,7 +35,7 @@
               </div>
               <p class="text-white text-lg font-bold mt-3">Corte de Cabelo</p>
               <div class="flex items-center flex-row gap-2 mt-2">
-                <img
+                <NuxtImg
                   class="w-6 h-6 rounded-full shadow"
                   src="https://picsum.photos/id/223/50"
                 />

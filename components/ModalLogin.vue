@@ -5,19 +5,34 @@
       <p class="text-sm font-normal text-zinc-400 mt-2">
         Conecte-se usando sua conta Google.
       </p>
-      <button
-        class="w-full bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-zinc-800 transition-all"
-        :disabled="isLogging"
-        @click="loginWithGoogle"
-      >
-        <template v-if="!isLogging">
-          <Icon name="tabler:brand-google-filled" size="14" color="#FFF" />
-          <p class="text-sm font-bold">Google</p></template
+      <div class="flex flex-row gap-2">
+        <button
+          class="w-full bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-zinc-800 transition-all"
+          :disabled="isLogging"
+          @click="login('google')"
         >
-        <template v-else>
-          <Icon name="eos-icons:bubble-loading" size="14" color="#FFF" />
-        </template>
-      </button>
+          <template v-if="!isLogging">
+            <Icon name="tabler:brand-google-filled" size="14" color="#FFF" />
+            <p class="text-sm font-bold">Google</p></template
+          >
+          <template v-else>
+            <Icon name="eos-icons:bubble-loading" size="14" color="#FFF" />
+          </template>
+        </button>
+        <button
+          class="w-full bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-zinc-800 transition-all"
+          :disabled="isLogging"
+          @click="login('facebook')"
+        >
+          <template v-if="!isLogging">
+            <Icon name="ic:baseline-facebook" size="14" color="#FFF" />
+            <p class="text-sm font-bold">Facebook</p></template
+          >
+          <template v-else>
+            <Icon name="eos-icons:bubble-loading" size="14" color="#FFF" />
+          </template>
+        </button>
+      </div>
     </div>
   </Modal>
 </template>
@@ -28,12 +43,12 @@ const client = useSupabaseClient();
 
 const isLogging = ref(false);
 
-const loginWithGoogle = async () => {
+const login = async (provider) => {
   isLogging.value = true;
   try {
     await client.auth.signInWithOAuth({
-      provider: "google",
       redirectTo: window.location.origin,
+      provider
     });
   } catch (error) {
     console.log(error);

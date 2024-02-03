@@ -4,7 +4,7 @@
       class="max-w-container w-full pt-12 flex flex-row gap-10 border-t border-t-zinc-600"
     >
       <div class="flex-1 flex flex-col">
-        <img
+        <NuxtImg 
           v-if="!useBarbershop.barbershopLoading"
           :src="runtimeConfig.public.bucketUrl + '/' + barbershop.image"
           class="w-full h-96 rounded-lg shadow object-cover"
@@ -83,7 +83,7 @@
               <div
                 class="bg-zinc-900 rounded-lg flex flex-row absolute bottom-5 w-[calc(100%-40px)] gap-3 py-3 px-5"
               >
-                <img
+                <NuxtImg
                   class="object-cover rounded-full w-12 h-12"
                   :src="runtimeConfig.public.bucketUrl + '/' + barbershop.image"
                 />
