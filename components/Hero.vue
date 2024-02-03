@@ -13,6 +13,10 @@
             Olá, <span class="font-bold">{{ userFirstName }}</span>
           </p>
           <p class="text-white font-normal text- mt-1">{{ currentDate }}</p>
+          <template #fallback>
+            <LoaderSkeleton width="220px" height="32px" />
+            <LoaderSkeleton class="mt-1" width="300px" height="32px" />
+          </template>
         </ClientOnly>
 
         <form @submit.prevent="" class="flex flex-row items-center gap-2 mt-12">
@@ -65,12 +69,25 @@
       <div class="w-1/2">
         <p class="uppercase font-bold text-sm text-zinc-400">Recomendados</p>
         <div class="w-full mt-5 flex flex-row">
-          <Carousel :items-to-show="2.3" class="w-full">
+          <Carousel
+            v-if="!useBarbershop.recomendedBarbershopsLoading"
+            :items-to-show="2.3"
+            class="w-full"
+          >
             <Slide
               v-for="barbershop in recomendedBarbershops"
               :key="barbershop"
             >
               <CardBarber :barbershop="barbershop" />
+            </Slide>
+            <template #addons>
+              <Navigation />
+              <Navigation />
+            </template>
+          </Carousel>
+          <Carousel v-else :items-to-show="2.3" class="w-full">
+            <Slide v-for="index in 5" :key="index">
+              <LoaderSkeleton width="224px" height="314px" />
             </Slide>
             <template #addons>
               <Navigation />

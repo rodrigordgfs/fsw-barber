@@ -32,6 +32,10 @@
             <img class="rounded-full w-9 h-9 shadow" :src="userImage" />
             <span class="font-bold text-sm text-white">{{ userName }}</span>
           </div>
+          <template #fallback>
+            <LoaderSkeleton width="160px" height="52px" />
+            <LoaderSkeleton width="160px" height="52px" />
+          </template>
         </ClientOnly>
       </div>
     </div>

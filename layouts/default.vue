@@ -1,5 +1,5 @@
 <template>
-  <div id="DefaultLayout" class="overflow-auto">
+  <div id="DefaultLayout">
     <Header />
     <slot />
     <Footer />
