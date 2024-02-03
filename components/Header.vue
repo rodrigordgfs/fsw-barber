@@ -7,7 +7,7 @@
         src="/logo.svg"
         alt="Logo FSW Barber"
       />
-      <div class="flex flex-row items- gap-6">
+      <div class="flex flex-row gap-6">
         <ClientOnly>
           <button
             v-if="isUserLoggedIn"
