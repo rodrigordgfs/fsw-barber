@@ -24,7 +24,7 @@
             </div>
           </div>
           <div
-            class="bg-zinc-800 py-3 px-5 rounded-lg flex flex-col gap-2 items-center justify-center"
+            class="bg-zinc-900 py-3 px-5 rounded-lg flex flex-col gap-2 items-center justify-center"
           >
             <div class="flex flex-row items-center gap-1">
               <Icon name="ic:baseline-star" class="text-purple-600" size="20" />
@@ -47,11 +47,11 @@
         </div>
       </div>
       <div class="w-1/3">
-        <div class="w-full flex flex-col p-5 rounded-lg bg-zinc-800">
+        <div class="w-full flex flex-col p-5 rounded-lg bg-zinc-900">
           <div class="w-full flex">
-            <div class="bg-zinc-900 rounded-lg w-full h-44 relative p-5">
+            <div class="bg-zinc-950 rounded-lg w-full h-44 relative p-5">
               <div
-                class="bg-zinc-800 rounded-lg flex flex-row absolute bottom-5 w-[calc(100%-40px)] gap-3 py-3 px-5"
+                class="bg-zinc-900 rounded-lg flex flex-row absolute bottom-5 w-[calc(100%-40px)] gap-3 py-3 px-5"
               >
                 <img
                   class="object-cover rounded-full w-12 h-12"

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row gap-3 bg-zinc-800 border border-gray-600 rounded-lg p-3"
+    class="flex flex-row gap-3 bg-zinc-900 border border-gray-600 rounded-lg p-3"
   >
     <img
       class="object-cover w-28 h-28 rounded-lg shadow"
@@ -21,7 +21,7 @@
           }}
         </p>
         <button
-          class="bg-zinc-900 rounded-lg py-2 px-4 text-sm text-white font-bold hover:bg-purple-900 transition-all"
+          class="bg-zinc-800 rounded-lg py-2 px-4 text-sm text-white font-bold hover:bg-purple-900 transition-all"
         >
           Reservar
         </button>

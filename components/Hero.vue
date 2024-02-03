@@ -18,21 +18,7 @@
             <LoaderSkeleton class="mt-1" width="300px" height="32px" />
           </template>
         </ClientOnly>
-
-        <form @submit.prevent="" class="flex flex-row items-center gap-2 mt-12">
-          <input
-            class="w-full bg-zinc-900 border border-zinc-600 text-white text-sm h-9 outline-none py-2 px-3 rounded-lg"
-            type="text"
-            placeholder="Buscar Barbearias"
-          />
-          <button
-            type="submit"
-            class="flex items-center justify-center rounded-lg w-10 h-9 bg-purple-900 hover:bg-purple-800 transition-all"
-          >
-            <Icon name="ic:round-search" color="#FFF" size="24" />
-          </button>
-        </form>
-
+        <InputSearchBarbershop />
         <div v-if="hasScheduling">
           <p class="uppercase font-bold text-sm text-zinc-400 mt-12">
             Agendamentos
