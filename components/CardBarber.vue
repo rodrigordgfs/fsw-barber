@@ -32,6 +32,8 @@
 </template>
 
 <script setup>
+const router = useRouter();
+
 const props = defineProps({
   barbershop: Object,
 });
@@ -46,11 +48,11 @@ const rate = computed(() => {
     }, 0);
     return Number(count / props.barbershop.rates.length).toFixed(1);
   }
-  return 5.0;
+  return Number(5.0).toFixed(1);
 });
 
 const openBarbershop = (id) => {
-  alert(id);
+  router.push(`/barbershop/${id}`);
 };
 </script>
 

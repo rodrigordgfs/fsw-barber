@@ -11,24 +11,45 @@ datasource db {
 }
 
 model Barbershop {
-  id          String   @id @default(uuid())
+  id          String     @id @default(uuid())
   name        String
-  address     String   @db.VarChar(55)
+  address     String     @db.VarChar(55)
   image       String
   about       String
-  recommended Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  recommended Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
   // barbers   Barber[]
-  // services  Service[]
-  // phones    Phone[]
+  phones      Phones[]
   rates       Rates[]
+  services    Services[]
 }
 
 model Rates {
   id           String     @id @default(uuid())
   userId       String
   rate         Float
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  barbershopId String
+}
+
+model Services {
+  id           String     @id @default(uuid())
+  name         String
+  price        Float
+  description  String
+  image        String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  barbershopId String
+}
+
+model Phones {
+  id           String     @id @default(uuid())
+  number       String
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)

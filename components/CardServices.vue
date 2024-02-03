@@ -1,0 +1,41 @@
+<template>
+  <div
+    class="flex flex-row gap-3 bg-zinc-800 border border-gray-600 rounded-lg p-3"
+  >
+    <img
+      class="object-cover w-28 h-28 rounded-lg shadow"
+      :src="runtimeConfig.public.bucketUrl + '/' + service.image"
+    />
+    <div class="flex flex-col justify-center gap-1">
+      <p class="text-sm text-white font-bold mb-1">{{ service.name }}</p>
+      <p class="text-sm font-normal text-gray-400">
+        {{ service.description }}
+      </p>
+      <div class="flex flex-row gap-2 items-center">
+        <p class="flex-1 text-purple-600 text-sm font-bold">
+          {{
+            service.price.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            })
+          }}
+        </p>
+        <button
+          class="bg-zinc-900 rounded-lg py-2 px-4 text-sm text-white font-bold hover:bg-purple-900 transition-all"
+        >
+          Reservar
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+const runtimeConfig = useRuntimeConfig();
+
+const props = defineProps({
+  service: Object,
+});
+</script>
+
+<style></style>

@@ -1,7 +1,12 @@
 <template>
   <div id="Header" class="bg-zinc-900 w-full flex items-center justify-center">
     <div class="max-w-container w-full my-8 flex items-center justify-between">
-      <img src="/logo.svg" alt="Logo FSW Barber" />
+      <img
+        @click="goToHome"
+        class="cursor-pointer"
+        src="/logo.svg"
+        alt="Logo FSW Barber"
+      />
       <div class="flex flex-row items- gap-6">
         <ClientOnly>
           <button
@@ -36,6 +41,7 @@
 <script setup>
 const useModal = useModalStore();
 const user = useSupabaseUser();
+const router = useRouter();
 
 const isUserLoggedIn = computed(() => !!user.value);
 const userImage = computed(
@@ -44,6 +50,10 @@ const userImage = computed(
 const userName = computed(
   () => user.value.identities[0].identity_data.full_name
 );
+
+const goToHome = () => {
+  router.push("/");
+};
 </script>
 
 <style></style>
