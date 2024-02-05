@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     "@vite-pwa/nuxt",
     "vue3-carousel-nuxt",
     "@nuxt/image",
+    "@samk-dev/nuxt-vcalendar",
   ],
   pages: true,
   runtimeConfig: {

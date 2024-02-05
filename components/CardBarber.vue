@@ -41,7 +41,6 @@ const props = defineProps({
 const runtimeConfig = useRuntimeConfig();
 
 const rate = computed(() => {
-  console.log();
   if (props.barbershop?.rates?.length > 0) {
     const count = props.barbershop.rates.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.rate;

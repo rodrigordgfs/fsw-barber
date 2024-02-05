@@ -5,6 +5,7 @@ export const useModalStore = defineStore("modal", {
   state: () => ({
     showModalLogin: false,
     showModalLogout: false,
+    showModalReservationDone: false,
   }),
   actions: {
     toggleModalLogin() {
@@ -13,6 +14,10 @@ export const useModalStore = defineStore("modal", {
 
     toggleModalLogout() {
       this.showModalLogout = !this.showModalLogout;
+    },
+
+    toggleModalReservationDone() {
+      this.showModalReservationDone = !this.showModalReservationDone;
     },
   },
 });

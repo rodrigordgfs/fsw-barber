@@ -6,6 +6,7 @@
     <Footer />
     <ModalLogin />
     <ModalLogout />
+    <ModalReservationDone />
   </div>
 </template>
 
