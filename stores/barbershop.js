@@ -9,6 +9,8 @@ export const useBarbershopStore = defineStore("barbershop", {
     barbershopsLoading: true,
     barbershop: null,
     barbershopLoading: true,
+    barbershopsByVisits: [],
+    barbershopsByVisitsLoading: true,
   }),
   actions: {
     async getAllRecomendedBarbershops() {
@@ -52,6 +54,18 @@ export const useBarbershopStore = defineStore("barbershop", {
         this.barbershopsLoading = false;
       });
       this.barbershops = response.data;
+      return response.data;
+    },
+
+    async getBarbershopsByVisits() {
+      this.barbershopsByVisitsLoading = true;
+      this.barbershopsByVisits = [];
+      const response = await useFetch("api/get-barbershops-by-visits").finally(
+        () => {
+          this.barbershopsByVisitsLoading = false;
+        }
+      );
+      this.barbershopsByVisits = response.data;
       return response.data;
     },
   },

@@ -4,7 +4,7 @@
       <h2 class="text-white text-xl font-bold">Mais Visitados</h2>
 
       <Carousel
-        v-if="!useBarbershop.barbershopsLoading"
+        v-if="!useBarbershop.barbershopsByVisitsLoading"
         :items-to-show="4.6"
         class="w-full"
       >
@@ -35,13 +35,13 @@ const barbershops = ref([]);
 
 onBeforeMount(async () => {
   try {
-    await useBarbershop.getAllBarbershops();
+    await useBarbershop.getBarbershopsByVisits();
   } catch (error) {}
 });
 
 onMounted(() => {
   watchEffect(() => {
-    barbershops.value = useBarbershop.barbershops;
+    barbershops.value = useBarbershop.barbershopsByVisits;
   });
 });
 </script>
