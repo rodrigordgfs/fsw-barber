@@ -32,7 +32,10 @@
         </ClientOnly>
         <div></div>
         <div v-if="date" class="border-t border-t-gray-600 mb-5" />
-        <div v-if="date" class="flex flex-row gap-3 scroll-container-times">
+        <div
+          v-if="date"
+          class="flex flex-row gap-3 pb-4 scroll-container-times"
+        >
           <p
             v-if="!loadingTimes"
             v-for="time in times"
@@ -251,21 +254,20 @@ onMounted(() => {
   color: #581c87 !important;
 }
 
-.scroll-container {
+.scroll-container-times {
   overflow-x: scroll;
   overflow-y: hidden;
 }
 
-.scroll-container::-webkit-scrollbar {
-  width: 8px; /* Largura da barra de rolagem */
+.scroll-container-times::-webkit-scrollbar {
+  width: 12px;
 }
 
-.scroll-container::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Cor de fundo da barra de rolagem */
+.scroll-container-times::-webkit-scrollbar-track {
+  background: #27272a;
 }
 
-.scroll-container::-webkit-scrollbar-thumb {
-  background: #888; /* Cor da barra de rolagem */
-  border-radius: 4px; /* Raio das bordas da barra de rolagem */
+.scroll-container-times::-webkit-scrollbar-thumb {
+  background: #581c87;
 }
 </style>
