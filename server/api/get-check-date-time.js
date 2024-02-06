@@ -9,6 +9,9 @@ export default defineEventHandler(async (event) => {
       barbershopId,
       date,
       time,
+      status: {
+        notIn: ["DONE", "CANCELED"],
+      }
     },
   });
 
