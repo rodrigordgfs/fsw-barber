@@ -23,6 +23,13 @@ export default defineNuxtConfig({
     },
   },
   supabase: { redirect: false },
+  nitro: {
+    vercel: {
+      config: { 
+        bypassToken: process.env.VERCEL_BYPASS_TOKEN
+      }
+    }
+  },
   app: {
     head: {
       title: "FSW Barber",
