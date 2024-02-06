@@ -1,7 +1,7 @@
 <template>
   <div id="Search" class="w-full h-full flex items-center justify-center">
     <div
-      class="max-w-container w-full pt-12 flex flex-col gap-10 border-t border-t-zinc-600"
+      class="max-w-container w-full pt-12 flex flex-col gap-10 border-t border-t-zinc-600 px-2"
     >
       <h1 class="text-white text-xl font-bold">
         Resultados para "{{ search }}"

@@ -1,5 +1,5 @@
 <template>
-  <div id="Header" class="bg-zinc-950 w-full flex items-center justify-center">
+  <div id="Header" class="bg-zinc-950 w-full flex items-center justify-center px-2">
     <div class="max-w-container w-full my-8 flex items-center justify-between">
       <img
         @click="goToHome"

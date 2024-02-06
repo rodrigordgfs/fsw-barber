@@ -3,7 +3,7 @@
     id="Hero"
     class="w-full h-full bg-zinc-800 flex items-center justify-center bg-hero-pattern bg-cover bg-no-repeat bg-center"
   >
-    <div class="max-w-container w-full my-16 flex flex-row gap-20">
+    <div class="max-w-container w-full my-16 flex flex-row gap-20 px-2">
       <div class="flex-1">
         <ClientOnly>
           <p v-if="!isUserLoggedIn" class="text-white font-normal text-2xl">

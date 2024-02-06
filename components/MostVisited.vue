@@ -1,6 +1,6 @@
 <template>
   <div id="Hero" class="w-full h-full flex items-center justify-center">
-    <div class="max-w-container w-full mt-10 flex flex-col gap-5">
+    <div class="max-w-container w-full mt-10 flex flex-col gap-5 px-2">
       <div class="flex flex-row gap-3 items-center">
         <h2 class="text-white text-xl font-bold">Mais Visitados</h2>
         <button

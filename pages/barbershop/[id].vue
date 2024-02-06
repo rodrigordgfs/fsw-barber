@@ -1,7 +1,7 @@
 <template>
   <div id="Barbershop" class="w-full h-full flex items-center justify-center">
     <div
-      class="max-w-container w-full pt-12 flex flex-col md:flex-row gap-10 border-t border-t-zinc-600"
+      class="max-w-container w-full pt-12 flex flex-col md:flex-row gap-10 border-t border-t-zinc-600 px-2"
     >
       <div class="flex-1 flex flex-col">
         <NuxtImg
