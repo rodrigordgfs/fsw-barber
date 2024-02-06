@@ -64,8 +64,17 @@
           >
             <ul class="flex flex-col gap-3">
               <li class="flex flex-row items-center justify-between">
-                <p class="font-bold text-base text-white">Corte de Cabelo</p>
-                <p class="font-bold text-sm text-white">R$50,00</p>
+                <p class="font-bold text-base text-white">
+                  {{ useBookMenu.currentService.name }}
+                </p>
+                <p class="font-bold text-sm text-white">
+                  {{
+                    useBookMenu.currentService.price.toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })
+                  }}
+                </p>
               </li>
               <li class="flex flex-row items-center justify-between">
                 <p class="font-normal text-base text-gray-400">Data</p>
@@ -118,7 +127,7 @@ import moment from "moment";
 const useBookMenu = useBookMenuStore();
 const useUser = useSupabaseUser();
 const useModal = useModalStore();
-const { barbershop } = useBarbershopStore();
+const useBarbershop = useBarbershopStore();
 const { timeInterval } = useTimeInterval();
 
 const loadingTimes = ref(false);
@@ -126,6 +135,7 @@ const savingReservation = ref(false);
 const date = ref(new Date());
 const times = ref([]);
 const timeSelected = ref("");
+const barbershop = ref({});
 const selectedColor = ref("purple");
 const calendarAttrs = ref([
   {
@@ -148,6 +158,7 @@ watch(
 );
 
 const dayChanged = async () => {
+  console.log("barbershop", barbershop);
   timeSelected.value = "";
   if (date.value) {
     loadingTimes.value = true;
@@ -200,15 +211,23 @@ const saveReservation = async () => {
     body: JSON.stringify({
       date: moment(date.value).format("DD/MM/YYYY"),
       time: timeSelected.value,
-      barbershopId: barbershop.id,
+      barbershopId: useBarbershop.barbershop.id,
       userId: useUser.value.id,
+      serviceId: useBookMenu.currentService.id,
     }),
   }).finally(() => {
     savingReservation.value = false;
+    useBookMenu.currentService = null;
     useBookMenu.toggle();
     useModal.toggleModalReservationDone();
   });
 };
+
+onMounted(() => {
+  watchEffect(() => {
+    barbershop.value = useBarbershop.barbershop;
+  });
+});
 </script>
 
 <style>

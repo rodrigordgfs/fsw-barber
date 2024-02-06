@@ -4,9 +4,9 @@
       class="max-w-container w-full pt-12 flex flex-row gap-10 border-t border-t-zinc-600"
     >
       <div class="flex-1 flex flex-col">
-        <NuxtImg 
+        <NuxtImg
           v-if="!useBarbershop.barbershopLoading"
-          :src="runtimeConfig.public.bucketUrl + '/' + barbershop.image"
+          :src="runtimeConfig.public.bucketUrl + '/' + barbershopImage"
           class="w-full h-96 rounded-lg shadow object-cover"
         />
         <LoaderSkeleton v-else width="100%" height="384px" />
@@ -16,7 +16,7 @@
               v-if="!useBarbershop.barbershopLoading"
               class="text-3xl font-bold text-white"
             >
-              {{ barbershop.name }}
+              {{ barbershopName }}
             </h1>
             <LoaderSkeleton v-else width="250px" height="36px" />
             <div
@@ -29,7 +29,7 @@
                 size="16"
               />
               <p class="text-sm text-white font-normal">
-                {{ barbershop.address }}
+                {{ barbershopAddress }}
               </p>
             </div>
             <LoaderSkeleton v-else width="280px" height="20px" />
@@ -59,7 +59,7 @@
           <div class="grid grid-cols-2 gap-5">
             <CardServices
               v-if="!useBarbershop.barbershopLoading"
-              v-for="service in barbershop.services"
+              v-for="service in barbershop?.services"
               :key="barbershop"
               :service="service"
             />
@@ -85,18 +85,18 @@
               >
                 <NuxtImg
                   class="object-cover rounded-full w-12 h-12"
-                  :src="runtimeConfig.public.bucketUrl + '/' + barbershop.image"
+                  :src="runtimeConfig.public.bucketUrl + '/' + barbershopImage"
                 />
                 <div class="flex-1">
                   <p
                     class="text-base text-white font-bold w-[calc(100%-40px)] overflow-hidden whitespace-nowrap overflow-ellipsis"
                   >
-                    {{ barbershop.name }}
+                    {{ barbershopName }}
                   </p>
                   <p
                     class="text-xs text-white font-normal w-[calc(100%-40px)] overflow-hidden whitespace-nowrap overflow-ellipsis"
                   >
-                    {{ barbershop.address }}
+                    {{ barbershopAddress }}
                   </p>
                 </div>
               </div>
@@ -119,7 +119,7 @@
             v-if="!useBarbershop.barbershopLoading"
             class="text-sm text-gray-400 font-normal mt-2 mb-5"
           >
-            {{ barbershop.about }}
+            {{ barbershopAbout }}
           </p>
           <LoaderSkeleton v-else class="mb-5" width="100%" height="100px" />
           <div class="border-t border-t-gray-600 mb-5" />
@@ -127,7 +127,7 @@
             <ul class="w-full flex flex-col gap-3">
               <li
                 v-if="!useBarbershop.barbershopLoading"
-                v-for="phone in barbershop.phones"
+                v-for="phone in barbershop?.phones"
                 :key="phone"
                 class="flex flex-row justify-between items-center gap-2"
               >
@@ -143,7 +143,7 @@
                 </div>
                 <button
                   @click="copy(phone.number)"
-                  class="rounded-lg bg-zinc-900 py-2 px-4 hover:bg-purple-900 text-white text-sm font-bold transition-all"
+                  class="rounded-lg bg-zinc-800 py-2 px-4 hover:bg-purple-900 text-white text-sm font-bold transition-all"
                 >
                   Copiar
                 </button>
@@ -164,7 +164,7 @@
               <li
                 v-if="!useBarbershop.barbershopLoading"
                 class="flex flex-row items-center justify-between"
-                v-for="day in barbershop.days"
+                v-for="day in barbershop?.days"
               >
                 <p class="text-sm text-gray-400 font-normal">
                   {{ translateDayOfWeek(day.day) }}
@@ -209,6 +209,22 @@ const { copy } = useClipboard();
 
 const barbershop = ref({});
 
+const barbershopImage = computed(() => {
+  return barbershop.value?.image;
+});
+
+const barbershopName = computed(() => {
+  return barbershop.value?.name;
+});
+
+const barbershopAddress = computed(() => {
+  return barbershop.value?.address;
+});
+
+const barbershopAbout = computed(() => {
+  return barbershop.value?.about;
+});
+
 onBeforeMount(async () => {
   await useBarbershop.getBarbershopById(route.params.id);
 });
@@ -219,12 +235,8 @@ onMounted(() => {
   });
 });
 
-// onUnmounted(() => {
-//   useBarbershop.barbershop = {};
-// });
-
 const rate = computed(() => {
-  if (barbershop.value.rates?.length > 0) {
+  if (barbershop.value?.rates?.length > 0) {
     const count = barbershop.value.rates.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.rate;
     }, 0);
@@ -234,7 +246,7 @@ const rate = computed(() => {
 });
 
 const ratesQuantity = computed(() => {
-  return barbershop.value.rates?.length || 0;
+  return barbershop.value?.rates?.length || 0;
 });
 
 const formatPhoneNumber = (phoneNumber) => {

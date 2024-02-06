@@ -4,6 +4,7 @@ export const useBookMenuStore = defineStore("bookMenu", {
   id: "useBookMenuStore",
   state: () => ({
     isOpen: false,
+    currentService: null,
   }),
   actions: {
     toggle() {

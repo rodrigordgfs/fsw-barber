@@ -40,6 +40,7 @@ const props = defineProps({
 });
 
 const book = () => {
+  useBookMenu.currentService = props.service;
   useBookMenu.toggle();
 };
 </script>

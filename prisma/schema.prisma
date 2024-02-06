@@ -39,15 +39,16 @@ model Rates {
 }
 
 model Services {
-  id           String     @id @default(uuid())
+  id           String        @id @default(uuid())
   name         String
   price        Float
   description  String
   image        String
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  barbershop   Barbershop    @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
   barbershopId String
+  reservations Reservations?
 }
 
 model Phones {
@@ -69,6 +70,13 @@ enum Day {
   SATURDAY
 }
 
+enum Status {
+  RESERVED
+  CONFIRMED
+  CANCELED
+  DONE
+}
+
 model Days {
   id           String     @id @default(uuid())
   day          Day
@@ -85,8 +93,11 @@ model Reservations {
   userId       String
   date         String
   time         String
+  status       Status     @default(RESERVED)
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
   barbershopId String
+  service      Services   @relation(fields: [serviceId], references: [id])
+  serviceId    String     @unique
 }
