@@ -24,7 +24,7 @@
         <LoaderSkeleton v-else class="mt-12" width="480px" height="36px" />
         <div v-if="!useReservations.lastReservationsLoading">
           <div v-if="hasReservation">
-            <p class="uppercase font-bold text-sm text-zinc-400 mt-12">
+            <p class="uppercase font-bold text-sm text-zinc-400 mt-12 mb-5">
               Agendamentos
             </p>
             <CardReservation
@@ -46,32 +46,23 @@
           Recomendados
         </p>
         <LoaderSkeleton v-else class="mt-5" width="220px" height="20px" />
-        <div class="w-full mt-5 flex flex-row">
-          <Carousel
-            v-if="!useBarbershop.recomendedBarbershopsLoading"
-            :items-to-show="2.3"
-            class="w-full"
+        <div class="w-full mt-5 flex flex-row overflow-x-auto">
+          <div
+            class="flex flex-row whitespace-nowrap gap-4 pb-3 scroll-container-times"
           >
-            <Slide
+            <CardBarber
+              v-if="!useBarbershop.recomendedBarbershopsLoading"
+              class="flex-shrink-0 w-full max-w-[269px]"
               v-for="barbershop in recomendedBarbershops"
-              :key="barbershop"
-            >
-              <CardBarber :barbershop="barbershop" />
-            </Slide>
-            <template #addons>
-              <Navigation />
-              <Navigation />
-            </template>
-          </Carousel>
-          <Carousel v-else :items-to-show="2.3" class="w-full">
-            <Slide v-for="index in 5" :key="index">
-              <LoaderSkeleton width="224px" height="314px" />
-            </Slide>
-            <template #addons>
-              <Navigation />
-              <Navigation />
-            </template>
-          </Carousel>
+              :barbershop="barbershop"
+            />
+            <LoaderSkeleton
+              v-for="index in 2"
+              :key="index"
+              width="269px"
+              height="293px"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -123,19 +114,20 @@ onMounted(() => {
 </script>
 
 <style>
-.carousel__prev,
-.carousel__next {
-  border-radius: 50%;
-  margin: 0 12px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #581c87 !important;
-  color: #fff !important;
-  border: 1px solid #fff !important;
-  filter: drop-shadow(0px 15px 30px rgba(51, 51, 51, 0.2));
-  box-shadow: 0px 15px 30px rgba(51, 51, 51, 0.2);
+.scroll-container-times {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.scroll-container-times::-webkit-scrollbar {
+  height: 10px;
+}
+
+.scroll-container-times::-webkit-scrollbar-track {
+  background: #27272a;
+}
+
+.scroll-container-times::-webkit-scrollbar-thumb {
+  background: #581c87;
 }
 </style>

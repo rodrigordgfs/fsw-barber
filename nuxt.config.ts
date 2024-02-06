@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "@pinia/nuxt",
     "@vite-pwa/nuxt",
-    "vue3-carousel-nuxt",
     "@nuxt/image",
     "@samk-dev/nuxt-vcalendar",
     "dayjs-nuxt",

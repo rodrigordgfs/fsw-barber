@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="bg-zinc-900 border border-zinc-600 rounded-2xl flex flex-col w-56"
-  >
+  <div class="bg-zinc-900 border border-zinc-600 rounded-2xl flex flex-col">
     <div class="relative">
       <NuxtImg
         class="m-3 rounded-xl h-36 w-[calc(100%-24px)] object-cover"
@@ -17,8 +15,12 @@
       </div>
     </div>
     <div class="m-3">
-      <p class="text-white text-base font-bold">{{ barbershop.name }}</p>
-      <p class="text-zinc-400 text-sm font-normal mt-1">
+      <p class="text-white text-center text-base font-bold">
+        {{ barbershop.name }}
+      </p>
+      <p
+        class="text-zinc-400 text-sm overflow-hidden whitespace-nowrap overflow-ellipsis text-center font-normal mt-1"
+      >
         {{ barbershop.address }}
       </p>
     </div>

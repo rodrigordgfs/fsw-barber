@@ -32,7 +32,6 @@
     "nuxt-icon": "^0.6.8",
     "pinia": "^2.1.7",
     "prisma": "^5.9.1",
-    "uuid": "^9.0.1",
-    "vue3-carousel-nuxt": "^1.1.0"
+    "uuid": "^9.0.1"
   }
 }

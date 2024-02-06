@@ -251,21 +251,4 @@ onMounted(() => {
 .vc-highlight {
   color: #581c87 !important;
 }
-
-.scroll-container-times {
-  overflow-x: scroll;
-  overflow-y: hidden;
-}
-
-.scroll-container-times::-webkit-scrollbar {
-  width: 12px;
-}
-
-.scroll-container-times::-webkit-scrollbar-track {
-  background: #27272a;
-}
-
-.scroll-container-times::-webkit-scrollbar-thumb {
-  background: #581c87;
-}
 </style>

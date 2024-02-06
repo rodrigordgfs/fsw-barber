@@ -11,6 +11,8 @@ export const useBarbershopStore = defineStore("barbershop", {
     barbershopLoading: true,
     barbershopsByVisits: [],
     barbershopsByVisitsLoading: true,
+    barbershopsHighlights: [],
+    barbershopsHighlightsLoading: true,
   }),
   actions: {
     async getAllRecomendedBarbershops() {
@@ -45,6 +47,7 @@ export const useBarbershopStore = defineStore("barbershop", {
         .finally(() => {
           this.barbershopLoading = false;
         });
+      await this.patchIncreaseVisit(id);
       this.barbershop = response.data;
       return response.data;
     },
@@ -63,15 +66,39 @@ export const useBarbershopStore = defineStore("barbershop", {
       return response.data;
     },
 
-    async getBarbershopsByVisits() {
+    async getBarbershopsByVisits(query) {
       this.barbershopsByVisitsLoading = true;
       this.barbershopsByVisits = [];
-      const response = await useFetch("api/get-barbershops-by-visits")
+      const response = await useFetch("api/get-barbershops-by-visits", {
+        query,
+      })
         .catch((error) => {})
         .finally(() => {
           this.barbershopsByVisitsLoading = false;
         });
       this.barbershopsByVisits = response.data;
+      return response.data;
+    },
+
+    async getBarbershopsHighlights(query) {
+      this.barbershopsHighlightsLoading = true;
+      this.barbershopsHighlights = [];
+      const response = await useFetch("api/get-barbershops-highlights", {
+        query,
+      })
+        .catch((error) => {})
+        .finally(() => {
+          this.barbershopsHighlightsLoading = false;
+        });
+      this.barbershopsHighlights = response.data;
+      return response.data;
+    },
+
+    async patchIncreaseVisit(id) {
+      const response = await useFetch(`/api/patch-increase-visit`, {
+        method: "PATCH",
+        query: { barbershopId: id },
+      }).catch((error) => {});
       return response.data;
     },
   },

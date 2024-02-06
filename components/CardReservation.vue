@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row items-center rounded-lg border border-zinc-600 bg-zinc-800 p-3 hover:bg-zinc-900 transition-all cursor-pointer"
+    class="flex flex-row items-center rounded-lg border border-zinc-600 bg-zinc-900 p-3 hover:bg-zinc-800 transition-all cursor-pointer"
   >
     <div class="flex-1 flex flex-col border-r border-r-zinc-600">
       <div>

@@ -1,10 +1,10 @@
 <template>
   <div id="Search" class="w-full h-full flex justify-center">
     <div
-      class="max-w-container w-full pt-12 flex flex-col gap-10 border-t border-t-zinc-600"
+      class="max-w-container w-full pt-12 px-2 flex flex-col gap-10 border-t border-t-zinc-600"
     >
       <h1 class="text-white text-2xl font-bold mb-5">Agendamentos</h1>
-      <div class="flex flex-row gap-10">
+      <div class="flex flex-col md:flex-row gap-3 md:gap-10">
         <div
           v-if="!useReservations.reservationsLoading"
           class="flex-1 flex flex-col"
