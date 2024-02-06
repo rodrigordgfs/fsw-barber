@@ -24,7 +24,7 @@
     </div>
     <button
       @click="openBarbershop(barbershop.id)"
-      class="bg-zinc-800 text-white font-bold rounded-lg mx-3 mb-3 p-2 hover:bg-purple-900 transition-all cursor-pointer"
+      class="bg-zinc-800 text-white font-bold outline-none rounded-lg mx-3 mb-3 p-2 hover:bg-purple-900 transition-all cursor-pointer"
     >
       Reservar
     </button>

@@ -27,42 +27,7 @@
             <p class="uppercase font-bold text-sm text-zinc-400 mt-12">
               Agendamentos
             </p>
-            <div
-              class="flex flex-row items-center rounded-lg border border-zinc-600 bg-zinc-800 p-3 mt-5 hover:bg-zinc-900 transition-all cursor-pointer"
-            >
-              <div class="flex-1 flex flex-col border-r border-r-zinc-600">
-                <div>
-                  <span
-                    class="rounded-lg bg-purple-900 text-purple-300 font-bold text-xs px-2"
-                  >
-                    {{ reservationsStatus[reservation.status] }}
-                  </span>
-                </div>
-                <p class="text-white text-lg font-bold mt-3">
-                  {{ reservationServiceName }}
-                </p>
-                <div class="flex items-center flex-row gap-2 mt-2">
-                  <NuxtImg
-                    class="w-6 h-6 rounded-full shadow"
-                    :src="
-                      runtimeConfig.public.bucketUrl +
-                      '/' +
-                      reservationServiceImage
-                    "
-                  />
-                  <p class="text-white font-normal text-sm">
-                    {{ reservationBarbershopName }}
-                  </p>
-                </div>
-              </div>
-              <div
-                class="ml-7 mr-4 text-white flex flex-col items-center justify-center font-normal"
-              >
-                <p class="text-xs">{{ reservationMonth }}</p>
-                <p class="text-2xl">{{ reservationDay }}</p>
-                <p class="text-xs">{{ reservation.time }}</p>
-              </div>
-            </div>
+            <CardReservation :reservation="reservation" />
           </div>
         </div>
         <div v-else class="flex flex-col mt-12">
@@ -113,17 +78,9 @@
 <script setup>
 import moment from "moment";
 
-const reservationsStatus = {
-  RESERVED: "Reservado",
-  CONFIRMED: "Confirmado",
-  CANCELED: "Cancelado",
-  DONE: "Concluído",
-};
-
 const useUser = useSupabaseUser();
 const useBarbershop = useBarbershopStore();
 const useReservations = useReservationsStore();
-const runtimeConfig = useRuntimeConfig();
 
 const reservation = ref({});
 const recomendedBarbershops = ref([]);
@@ -135,21 +92,6 @@ const userFirstName = computed(
 );
 const hasReservation = computed(() => {
   return isUserLoggedIn && reservation.value?.id;
-});
-const reservationMonth = computed(() => {
-  return moment(reservation.value?.date).locale("pt-BR").format("MMMM");
-});
-const reservationDay = computed(() => {
-  return moment(reservation.value?.date).locale("pt-BR").format("DD");
-});
-const reservationServiceName = computed(() => {
-  return reservation.value?.service?.name;
-});
-const reservationServiceImage = computed(() => {
-  return reservation.value?.service?.image;
-});
-const reservationBarbershopName = computed(() => {
-  return reservation.value?.barbershop?.name;
 });
 const currentDate = computed(() => {
   return moment().locale("pt-br").format("dddd, D [de] MMMM");

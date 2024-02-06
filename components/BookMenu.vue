@@ -97,7 +97,7 @@
             </ul>
           </div>
           <button
-            class="w-full bg-purple-800 text-white rounded-lg py-2 text-sm font-bold mt-5 hover:bg-purple-900 transition-all disabled:bg-gray-600 disabled:cursor-not-allowed"
+            class="w-full bg-purple-800 outline-none text-white rounded-lg py-2 text-sm font-bold mt-5 hover:bg-purple-900 transition-all disabled:bg-gray-600 disabled:cursor-not-allowed"
             :disabled="savingReservation"
             @click="saveReservation"
           >

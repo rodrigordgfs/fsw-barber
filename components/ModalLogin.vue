@@ -7,7 +7,7 @@
       </p>
       <div class="flex flex-row gap-2">
         <button
-          class="w-full bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-zinc-800 transition-all"
+          class="w-full bg-transparent outline-none rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-zinc-800 transition-all"
           :disabled="isLogging"
           @click="login('google')"
         >
@@ -20,7 +20,7 @@
           </template>
         </button>
         <button
-          class="w-full bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-zinc-800 transition-all"
+          class="w-full bg-transparent outline-none rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 mt-5 hover:bg-zinc-800 transition-all"
           :disabled="isLogging"
           @click="login('facebook')"
         >
@@ -48,7 +48,7 @@ const login = async (provider) => {
   try {
     await client.auth.signInWithOAuth({
       redirectTo: window.location.origin,
-      provider
+      provider,
     });
   } catch (error) {
     console.log(error);

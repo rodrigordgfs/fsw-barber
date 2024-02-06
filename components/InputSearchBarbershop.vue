@@ -11,7 +11,7 @@
     />
     <button
       type="submit"
-      class="flex items-center justify-center rounded-lg w-10 h-9 bg-purple-900 hover:bg-purple-800 transition-all disabled:bg-zinc-700"
+      class="flex items-center justify-center rounded-lg w-10 h-9 outline-none bg-purple-900 hover:bg-purple-800 transition-all disabled:bg-zinc-700"
       :disabled="search.length < 3"
     >
       <Icon name="ic:round-search" color="#FFF" size="24" />

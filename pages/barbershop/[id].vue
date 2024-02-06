@@ -143,7 +143,7 @@
                 </div>
                 <button
                   @click="copy(phone.number)"
-                  class="rounded-lg bg-zinc-800 py-2 px-4 hover:bg-purple-900 text-white text-sm font-bold transition-all"
+                  class="rounded-lg bg-zinc-800 py-2 px-4 outline-none hover:bg-purple-900 text-white text-sm font-bold transition-all"
                 >
                   Copiar
                 </button>

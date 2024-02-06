@@ -11,7 +11,8 @@
         <ClientOnly>
           <button
             v-if="isUserLoggedIn"
-            class="flex flex-row items-center text-white gap-2 rounded-lg py-2 px-4 hover:bg-zinc-900 transition-all"
+            @click="goToReservations"
+            class="flex flex-row items-center text-white gap-2 rounded-lg py-2 px-4 outline-none hover:bg-zinc-900 transition-all"
           >
             <Icon name="ic:baseline-calendar-month" size="16" />
             <span class="font-bold text-sm">Agendamentos</span>
@@ -19,7 +20,7 @@
           <button
             v-if="!isUserLoggedIn"
             @click="useModal.toggleModalLogin"
-            class="flex flex-row items-center bg-purple-900 text-white gap-2 rounded-lg py-2 px-4 hover:bg-purple-800 transition-all"
+            class="flex flex-row items-center bg-purple-900 outline-none text-white gap-2 rounded-lg py-2 px-4 hover:bg-purple-800 transition-all"
           >
             <Icon name="ic:baseline-person" size="16" />
             <span class="font-bold text-sm">Perfil</span>
@@ -57,6 +58,10 @@ const userName = computed(
 
 const goToHome = () => {
   router.push("/");
+};
+
+const goToReservations = () => {
+  router.push("/reservations");
 };
 </script>
 

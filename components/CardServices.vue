@@ -22,7 +22,7 @@
         </p>
         <button
           @click="book"
-          class="bg-zinc-800 rounded-lg py-2 px-4 text-sm text-white font-bold hover:bg-purple-900 transition-all"
+          class="bg-zinc-800 rounded-lg py-2 px-4 text-sm outline-none text-white font-bold hover:bg-purple-900 transition-all"
         >
           Reservar
         </button>

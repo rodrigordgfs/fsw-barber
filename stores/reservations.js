@@ -5,6 +5,8 @@ export const useReservationsStore = defineStore("reservations", {
   state: () => ({
     lastReservation: null,
     lastReservationsLoading: true,
+    reservations: [],
+    reservationsLoading: true,
   }),
   actions: {
     async getUserReservations(userId) {
@@ -16,6 +18,18 @@ export const useReservationsStore = defineStore("reservations", {
         this.lastReservationsLoading = false;
       });
       this.lastReservation = response.data;
+      return response.data;
+    },
+
+    async getAllReservations(userId) {
+      this.reservationsLoading = true;
+      this.reservations = [];
+      const response = await useFetch("api/get-all-reservations", {
+        query: { userId },
+      }).finally(() => {
+        this.reservationsLoading = false;
+      });
+      this.reservations = response.data;
       return response.data;
     },
   },

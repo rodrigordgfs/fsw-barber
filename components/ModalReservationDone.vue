@@ -13,7 +13,7 @@
         Sua reserva foi agendada com sucesso.
       </p>
       <button
-        class="w-full bg-purple-800 text-white rounded-lg py-2 text-sm font-bold hover:bg-purple-900 transition-all"
+        class="w-full bg-purple-800 text-white outline-none rounded-lg py-2 text-sm font-bold hover:bg-purple-900 transition-all"
         @click="confirm"
       >
         Confirmar

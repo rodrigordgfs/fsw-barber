@@ -8,13 +8,13 @@
       <div class="flex flex-row gap-2 mt-5">
         <button
           v-if="!isLogginOut"
-          class="w-1/2 bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 hover:bg-zinc-800 transition-all"
+          class="w-1/2 bg-transparent outline-none rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 hover:bg-zinc-800 transition-all"
           @click="useModal.toggleModalLogout"
         >
           <p class="text-sm font-bold">Cancelar</p>
         </button>
         <button
-          class="w-1/2 bg-transparent rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 hover:bg-red-500 transition-all"
+          class="w-1/2 bg-transparent outline-none rounded-lg border border-zinc-600 text-white flex gap-2 items-center justify-center py-2 px-7 hover:bg-red-500 transition-all"
           :class="{
             'w-full': isLogginOut,
           }"
