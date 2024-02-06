@@ -7,7 +7,7 @@
       />
       <div>
         <p
-          class="absolute top-4 left-4 py-1 flex fle-row gap-1 items-center bg-purple-900 bg-opacity-70 text-purple-300 font-bold text-xs px-2 rounded-2xl"
+          class="absolute top-4 left-4 py-1 flex fle-row gap-1 items-center bg-purple-900 bg-opacity-80 text-purple-300 font-bold text-xs px-2 rounded-2xl"
         >
           <Icon name="ic:baseline-star-rate" size="12" />
           {{ rate }}
