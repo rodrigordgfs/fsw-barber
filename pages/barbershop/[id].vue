@@ -1,13 +1,13 @@
 <template>
   <div id="Barbershop" class="w-full h-full flex items-center justify-center">
     <div
-      class="max-w-container w-full pt-12 flex flex-row gap-10 border-t border-t-zinc-600"
+      class="max-w-container w-full pt-12 flex flex-col md:flex-row gap-10 border-t border-t-zinc-600"
     >
       <div class="flex-1 flex flex-col">
         <NuxtImg
           v-if="!useBarbershop.barbershopLoading"
           :src="runtimeConfig.public.bucketUrl + '/' + barbershopImage"
-          class="w-full h-96 rounded-lg shadow object-cover"
+          class="w-full h-48 md:h-96 rounded-lg shadow object-cover"
         />
         <LoaderSkeleton v-else width="100%" height="384px" />
         <div class="flex flex-row gap-10 mt-5 items-center">
@@ -56,7 +56,7 @@
             Serviços
           </h2>
           <LoaderSkeleton v-else width="100px" height="20px" />
-          <div class="grid grid-cols-2 gap-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <CardServices
               v-if="!useBarbershop.barbershopLoading"
               v-for="service in barbershop?.services"
@@ -73,7 +73,7 @@
           </div>
         </div>
       </div>
-      <div class="w-1/3">
+      <div class="w-full md:w-1/3">
         <div class="w-full flex flex-col p-5 rounded-lg bg-zinc-900">
           <div class="w-full flex">
             <div

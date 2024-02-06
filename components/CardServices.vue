@@ -6,7 +6,7 @@
       class="object-cover w-28 h-28 rounded-lg shadow"
       :src="runtimeConfig.public.bucketUrl + '/' + service.image"
     />
-    <div class="flex flex-col justify-center gap-1">
+    <div class="flex-1 flex flex-col justify-center gap-1">
       <p class="text-sm text-white font-bold mb-1">{{ service.name }}</p>
       <p class="text-sm font-normal text-gray-400">
         {{ service.description }}
