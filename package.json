@@ -9,6 +9,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "build": {
+    "outputPath": "dist"
+  },
   "devDependencies": {
     "@samk-dev/nuxt-vcalendar": "^1.0.2",
     "autoprefixer": "^10.4.17",
