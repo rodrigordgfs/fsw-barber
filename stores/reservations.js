@@ -44,7 +44,7 @@ export const useReservationsStore = defineStore("reservations", {
       })
         .then(() => {})
         .catch((error) => {});
-      return response.data;
+      return TextTrackCue;
     },
   },
 });
