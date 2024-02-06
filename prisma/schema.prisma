@@ -39,16 +39,16 @@ model Rates {
 }
 
 model Services {
-  id           String        @id @default(uuid())
+  id           String         @id @default(uuid())
   name         String
   price        Float
   description  String
   image        String
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  barbershop   Barbershop    @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  barbershop   Barbershop     @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
   barbershopId String
-  reservations Reservations?
+  reservations Reservations[]
 }
 
 model Phones {
@@ -99,5 +99,5 @@ model Reservations {
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
   barbershopId String
   service      Services   @relation(fields: [serviceId], references: [id])
-  serviceId    String     @unique
+  serviceId    String
 }
