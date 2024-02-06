@@ -38,6 +38,7 @@
 const useModal = useModalStore();
 const client = useSupabaseClient();
 const user = useSupabaseUser();
+const router = useRouter();
 
 const isLogginOut = ref(false);
 
@@ -47,6 +48,7 @@ const logout = async () => {
     await client.auth.signOut().then(() => {
       user.value = null;
       useModal.toggleModalLogout();
+      router.push("/");
     });
   } catch (error) {
     console.log(error);

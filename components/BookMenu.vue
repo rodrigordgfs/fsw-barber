@@ -32,10 +32,7 @@
         </ClientOnly>
         <div></div>
         <div v-if="date" class="border-t border-t-gray-600 mb-5" />
-        <div
-          v-if="date"
-          class="flex flex-row gap-3 pb-4 scroll-container-times"
-        >
+        <div v-if="date" class="grid grid-cols-5 gap-3 pb-4">
           <p
             v-if="!loadingTimes"
             v-for="time in times"
@@ -53,10 +50,9 @@
           </p>
           <LoaderSkeleton
             v-else
-            v-for="index in 5"
-            class="scroll-container-times"
+            v-for="index in 15"
             :key="index"
-            width="70px"
+            width="72px"
             height="38px"
           />
         </div>

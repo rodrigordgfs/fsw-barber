@@ -4,9 +4,9 @@ export const useReservationsStore = defineStore("reservations", {
   id: "useReservationsStore",
   state: () => ({
     lastReservation: null,
-    lastReservationsLoading: true,
+    lastReservationsLoading: false,
     reservations: [],
-    reservationsLoading: true,
+    reservationsLoading: false,
     isLoadingCancel: false,
   }),
   actions: {

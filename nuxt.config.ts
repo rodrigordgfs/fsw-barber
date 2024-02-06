@@ -16,7 +16,6 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@samk-dev/nuxt-vcalendar",
   ],
-  pages: true,
   runtimeConfig: {
     public: {
       bucketUrl: process.env.BUCKET_URL,

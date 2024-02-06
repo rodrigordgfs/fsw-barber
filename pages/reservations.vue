@@ -265,6 +265,7 @@ const router = useRouter();
 
 definePageMeta({
   name: "Reservations",
+  middleware: ["auth"],
 });
 
 const reservationsStatus = {

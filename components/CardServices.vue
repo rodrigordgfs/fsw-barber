@@ -33,15 +33,21 @@
 
 <script setup>
 const runtimeConfig = useRuntimeConfig();
+const user = useSupabaseUser();
 const useBookMenu = useBookMenuStore();
+const useModalLogin = useModalStore();
 
 const props = defineProps({
   service: Object,
 });
 
 const book = () => {
-  useBookMenu.currentService = props.service;
-  useBookMenu.toggle();
+  if (!user.value) {
+    useModalLogin.toggleModalLogin();
+  } else {
+    useBookMenu.currentService = props.service;
+    useBookMenu.toggle();
+  }
 };
 </script>
 
