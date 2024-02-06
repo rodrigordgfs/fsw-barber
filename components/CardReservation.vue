@@ -36,6 +36,7 @@
 
 <script setup>
 import moment from "moment";
+import dayjs from "dayjs";
 
 const props = defineProps({
   reservation: Object,
@@ -72,9 +73,9 @@ const reservationBarbershopName = computed(() => {
   return props.reservation.barbershop?.name;
 });
 const reservationMonth = computed(() => {
-  return moment(String(props.reservation.date).split("/")[1])
-    .locale("pt-BR")
-    .format("MMMM");
+  return dayjs(String(props.reservation.date).split("/")[1])
+    .format("MMMM")
+    .replace(/^\w/, (char) => char.toUpperCase());
 });
 const reservationDay = computed(() => {
   return String(props.reservation.date).split("/")[0];

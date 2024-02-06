@@ -15,7 +15,14 @@ export default defineNuxtConfig({
     "vue3-carousel-nuxt",
     "@nuxt/image",
     "@samk-dev/nuxt-vcalendar",
+    "dayjs-nuxt",
   ],
+  dayjs: {
+    locales: ["pt-br"],
+    plugins: ["relativeTime", "utc", "timezone"],
+    defaultLocale: "pt-br",
+    defaultTimezone: "America/Sao_Paulo",
+  },
   runtimeConfig: {
     public: {
       bucketUrl: process.env.BUCKET_URL,

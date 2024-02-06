@@ -250,7 +250,7 @@
 
 <script setup>
 import { useClipboard } from "@vueuse/core";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const router = useRouter();
 const { copy } = useClipboard();
@@ -329,9 +329,9 @@ const cancelReservation = async () => {
 };
 
 const dateFormatted = computed(() => {
-  return moment(reservationSelected.date)
-    .locale("pt-BR")
-    .format("DD [de] MMMM");
+  return dayjs()
+    .format("DD [de] MMMM")
+    .replace(/^\w/, (char) => char.toUpperCase());
 });
 
 const formatPhoneNumber = (phoneNumber) => {

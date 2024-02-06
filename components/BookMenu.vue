@@ -122,6 +122,7 @@
 
 <script setup>
 import moment from "moment";
+import dayjs from "dayjs";
 
 const useBookMenu = useBookMenuStore();
 const useUser = useSupabaseUser();
@@ -144,7 +145,9 @@ const calendarAttrs = ref([
 ]);
 
 const dateFormatted = computed(() => {
-  return moment(date.value).locale("pt-BR").format("DD [de] MMMM");
+  return dayjs()
+    .format("DD [de] MMMM")
+    .replace(/^\w/, (char) => char.toUpperCase());
 });
 
 watch(
@@ -157,7 +160,6 @@ watch(
 );
 
 const dayChanged = async () => {
-  console.log("barbershop", barbershop);
   timeSelected.value = "";
   if (date.value) {
     loadingTimes.value = true;

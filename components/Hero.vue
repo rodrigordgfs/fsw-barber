@@ -79,7 +79,7 @@
 </template>
 
 <script setup>
-import moment from "moment";
+import dayjs from "dayjs";
 
 const useUser = useSupabaseUser();
 const router = useRouter();
@@ -98,7 +98,9 @@ const hasReservation = computed(() => {
   return isUserLoggedIn && reservation.value?.id;
 });
 const currentDate = computed(() => {
-  return moment().locale("pt-br").format("dddd, D [de] MMMM");
+  return dayjs()
+    .format("dddd, D [de] MMMM")
+    .replace(/^\w/, (char) => char.toUpperCase());
 });
 
 onBeforeMount(async () => {
