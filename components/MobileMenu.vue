@@ -57,7 +57,7 @@
           class="border border-zinc-600 mt-3 rounded-lg px-4 py-3 flex flex-row gap-2 hover:bg-zinc-800 transition-all"
         >
           <Icon name="ic:baseline-calendar-month" color="#FFF" size="16" />
-          <p class="text-white font-bold text-sm">Início</p>
+          <p class="text-white font-bold text-sm">Agendamentos</p>
         </div>
       </div>
     </div>
