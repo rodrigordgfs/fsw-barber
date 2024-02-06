@@ -14,7 +14,7 @@
           <div class="flex-1 flex flex-col gap-3">
             <h1
               v-if="!useBarbershop.barbershopLoading"
-              class="text-3xl font-bold text-white"
+              class="text-3xl font-bold text-white overflow-hidden whitespace-nowrap overflow-ellipsis"
             >
               {{ barbershopName }}
             </h1>

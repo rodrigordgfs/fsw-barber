@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="useBookMenu.isOpen"
-      class="fixed top-0 right-0 w-[450px] h-screen bg-zinc-900 p-5 rounded-md shadow-lg z-50"
+      class="fixed top-0 right-0 w-full md:w-[450px] h-screen bg-zinc-900 p-5 rounded-md shadow-lg z-50"
     >
       <div class="flex flex-col">
         <div class="flex flex-row items-center justify-between">
