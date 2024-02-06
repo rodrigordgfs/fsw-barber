@@ -6,7 +6,12 @@ export default defineEventHandler(async (event) => {
 
   const reservations = await prisma.reservations.findMany({
     orderBy: { createdAt: "desc" },
-    include: { barbershop: true, service: true },
+    include: {
+      barbershop: {
+        include: { phones: true },
+      },
+      service: true,
+    },
     where: {
       userId,
     },

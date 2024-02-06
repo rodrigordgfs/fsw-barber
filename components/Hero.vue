@@ -27,7 +27,10 @@
             <p class="uppercase font-bold text-sm text-zinc-400 mt-12">
               Agendamentos
             </p>
-            <CardReservation :reservation="reservation" />
+            <CardReservation
+              :reservation="reservation"
+              @click="router.push('/reservations')"
+            />
           </div>
         </div>
         <div v-else class="flex flex-col mt-12">
@@ -79,6 +82,7 @@
 import moment from "moment";
 
 const useUser = useSupabaseUser();
+const router = useRouter();
 const useBarbershop = useBarbershopStore();
 const useReservations = useReservationsStore();
 

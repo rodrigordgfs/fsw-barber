@@ -7,6 +7,7 @@ export const useReservationsStore = defineStore("reservations", {
     lastReservationsLoading: true,
     reservations: [],
     reservationsLoading: true,
+    isLoadingCancel: false,
   }),
   actions: {
     async getUserReservations(userId) {
@@ -30,6 +31,13 @@ export const useReservationsStore = defineStore("reservations", {
         this.reservationsLoading = false;
       });
       this.reservations = response.data;
+      return response.data;
+    },
+
+    async cancelReservation(reservationId) {
+      const response = await useFetch("api/patch-cancel-reservation", {
+        query: { reservationId },
+      });
       return response.data;
     },
   },
