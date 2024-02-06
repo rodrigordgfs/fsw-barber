@@ -6,7 +6,7 @@
       <h1 class="text-white text-xl font-bold">
         Resultados para "{{ search }}"
       </h1>
-      <div class="grid grid-cols-4 gap-5 mt-5">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
         <CardBarber
           v-if="!useBarbershop.barbershopsLoading"
           v-for="barbershop in barbershops"
@@ -17,7 +17,7 @@
           v-else
           v-for="index in 8"
           :key="index"
-          width="224px"
+          width="100%"
           height="314px"
         />
       </div>
