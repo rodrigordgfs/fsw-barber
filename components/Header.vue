@@ -7,7 +7,7 @@
         src="/logo.svg"
         alt="Logo FSW Barber"
       />
-      <div class="flex flex-row gap-6">
+      <div class="hidden md:flex flex-row gap-6">
         <ClientOnly>
           <button
             v-if="isUserLoggedIn"
@@ -38,6 +38,9 @@
             <LoaderSkeleton width="160px" height="52px" />
           </template>
         </ClientOnly>
+      </div>
+      <div class="block md:hidden">
+        <Icon name="ic:round-menu" size="32" color="#FFF" />
       </div>
     </div>
   </div>

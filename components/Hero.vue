@@ -38,7 +38,7 @@
           <LoaderSkeleton class="mt-3" width="480px" height="122px" />
         </div>
       </div>
-      <div class="w-1/2">
+      <div class="hidden md:block md:w-1/2">
         <p
           v-if="!useBarbershop.recomendedBarbershopsLoading"
           class="uppercase font-bold text-sm text-zinc-400"

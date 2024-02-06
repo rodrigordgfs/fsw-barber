@@ -12,7 +12,7 @@
 
       <div
         v-if="!useBarbershop.barbershopsByVisitsLoading"
-        class="grid grid-cols-4 gap-3"
+        class="grid grid-cols-2 md:grid-cols-4 gap-3"
       >
         <CardBarber
           v-for="barbershop in barbershops"
@@ -20,7 +20,7 @@
           :barbershop="barbershop"
         />
       </div>
-      <div v-else class="grid grid-cols-4 gap-3">
+      <div v-else class="grid grid-cols-1 md:grid-cols-4 gap-3">
         <LoaderSkeleton
           v-for="index in 4"
           :key="index"
