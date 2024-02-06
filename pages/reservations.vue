@@ -1,5 +1,5 @@
 <template>
-  <div id="Search" class="w-full h-full flex items-center justify-center">
+  <div id="Search" class="w-full h-full flex justify-center">
     <div
       class="max-w-container w-full pt-12 flex flex-col gap-10 border-t border-t-zinc-600"
     >
@@ -249,9 +249,11 @@
 </template>
 
 <script setup>
+import { useClipboard } from "@vueuse/core";
 import moment from "moment";
 
 const router = useRouter();
+const { copy } = useClipboard();
 
 definePageMeta({
   name: "Reservations",
