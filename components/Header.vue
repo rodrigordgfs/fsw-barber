@@ -1,5 +1,8 @@
 <template>
-  <div id="Header" class="bg-zinc-950 w-full flex items-center justify-center px-2">
+  <div
+    id="Header"
+    class="bg-zinc-950 w-full flex items-center justify-center px-2"
+  >
     <div class="max-w-container w-full my-8 flex items-center justify-between">
       <img
         @click="goToHome"
@@ -40,7 +43,12 @@
         </ClientOnly>
       </div>
       <div class="block md:hidden">
-        <Icon name="ic:round-menu" size="32" color="#FFF" />
+        <Icon
+          @click="useMobileMenu.toggle"
+          name="ic:round-menu"
+          size="32"
+          color="#FFF"
+        />
       </div>
     </div>
   </div>
@@ -50,6 +58,7 @@
 const useModal = useModalStore();
 const user = useSupabaseUser();
 const router = useRouter();
+const useMobileMenu = useMobileMenuStore();
 
 const isUserLoggedIn = computed(() => !!user.value);
 const userImage = computed(
