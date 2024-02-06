@@ -15,9 +15,11 @@ export const useReservationsStore = defineStore("reservations", {
       this.lastReservation = [];
       const response = await useFetch("api/get-user-reservations", {
         query: { userId },
-      }).finally(() => {
-        this.lastReservationsLoading = false;
-      });
+      })
+        .catch((error) => {})
+        .finally(() => {
+          this.lastReservationsLoading = false;
+        });
       this.lastReservation = response.data;
       return response.data;
     },
@@ -27,9 +29,11 @@ export const useReservationsStore = defineStore("reservations", {
       this.reservations = [];
       const response = await useFetch("api/get-all-reservations", {
         query: { userId },
-      }).finally(() => {
-        this.reservationsLoading = false;
-      });
+      })
+        .catch((error) => {})
+        .finally(() => {
+          this.reservationsLoading = false;
+        });
       this.reservations = response.data;
       return response.data;
     },
@@ -37,7 +41,9 @@ export const useReservationsStore = defineStore("reservations", {
     async cancelReservation(reservationId) {
       const response = await useFetch("api/patch-cancel-reservation", {
         query: { reservationId },
-      });
+      })
+        .then(() => {})
+        .catch((error) => {});
       return response.data;
     },
   },
