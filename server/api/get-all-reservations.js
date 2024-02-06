@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { withAccelerate } from "@prisma/extension-accelerate";
+
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 export default defineEventHandler(async (event) => {
   const { userId } = getQuery(event);
@@ -15,6 +17,7 @@ export default defineEventHandler(async (event) => {
     where: {
       userId,
     },
+    cacheStrategy: { ttl: 60 },
   });
 
   return reservations;

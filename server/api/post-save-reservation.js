@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { withAccelerate } from "@prisma/extension-accelerate";
+
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -8,6 +10,7 @@ export default defineEventHandler(async (event) => {
     data: {
       ...body,
     },
+    cacheStrategy: { ttl: 60 },
   });
 
   return reservation;

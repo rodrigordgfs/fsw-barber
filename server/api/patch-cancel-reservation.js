@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { withAccelerate } from "@prisma/extension-accelerate";
+
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 export default defineEventHandler(async (event) => {
   const { reservationId } = getQuery(event);
@@ -11,6 +13,7 @@ export default defineEventHandler(async (event) => {
     data: {
       status: "CANCELED",
     },
+    cacheStrategy: { ttl: 60 },
   });
 
   return reservation;

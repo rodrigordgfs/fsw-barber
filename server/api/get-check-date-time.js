@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { withAccelerate } from "@prisma/extension-accelerate";
+
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 export default defineEventHandler(async (event) => {
   const { barbershopId, date, time } = getQuery(event);
@@ -11,8 +13,9 @@ export default defineEventHandler(async (event) => {
       time,
       status: {
         notIn: ["DONE", "CANCELED"],
-      }
+      },
     },
+    cacheStrategy: { ttl: 60 },
   });
 
   return !day[0];
