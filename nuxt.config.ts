@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     "@vite-pwa/nuxt",
     "@nuxt/image",
     "@samk-dev/nuxt-vcalendar",
-    "dayjs-nuxt",
+    "dayjs-nuxt"
   ],
   dayjs: {
     locales: ["pt-br"],

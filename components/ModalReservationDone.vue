@@ -24,7 +24,6 @@
 
 <script setup>
 const useModal = useModalStore();
-const useBookMenu = useBookMenuStore();
 
 const confirm = () => {
   useModal.toggleModalReservationDone();
