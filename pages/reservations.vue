@@ -57,14 +57,14 @@
           </div>
         </div>
         <div v-else class="flex-1 flex flex-col">
-          <LoaderSkeleton width="200px" height="32px" />
-          <LoaderSkeleton class="mt-2" width="100%" height="122px" />
-          <LoaderSkeleton class="mt-5" width="200px" height="32px" />
-          <LoaderSkeleton class="mt-2" width="100%" height="122px" />
-          <LoaderSkeleton class="mt-5" width="200px" height="32px" />
-          <LoaderSkeleton class="mt-2" width="100%" height="122px" />
-          <LoaderSkeleton class="mt-5" width="200px" height="32px" />
-          <LoaderSkeleton class="mt-2" width="100%" height="122px" />
+          <LoaderSkeleton class="w-[200px] h-[32px]" />
+          <LoaderSkeleton class="w-full h-[122px] mt-2" />
+          <LoaderSkeleton class="w-[200px] h-[32px] mt-5" />
+          <LoaderSkeleton class="w-full h-[122px] mt-2" />
+          <LoaderSkeleton class="w-[200px] h-[32px] mt-5" />
+          <LoaderSkeleton class="w-full h-[122px] mt-2" />
+          <LoaderSkeleton class="w-[200px] h-[32px] mt-5" />
+          <LoaderSkeleton class="w-full h-[122px] mt-2" />
         </div>
         <div class="flex-1" v-if="reservationSelected">
           <div class="flex flex-col mt-5 p-5 rounded-lg bg-zinc-900">
@@ -97,26 +97,21 @@
                 </div>
               </div>
             </div>
-            <LoaderSkeleton v-else width="100%" height="176px" />
+            <LoaderSkeleton v-else class="w-full h-[176px]" />
             <p
               v-if="!useReservations.reservationsLoading"
               class="uppercase text-white text-sm font-bold mt-5"
             >
               Sobre Nós
             </p>
-            <LoaderSkeleton
-              v-else
-              class="mt-4 mb-5"
-              width="100px"
-              height="20px"
-            />
+            <LoaderSkeleton v-else class="w-[100px] h-[20px] mt-4 mb-5" />
             <p
               v-if="!useReservations.reservationsLoading"
               class="text-sm text-gray-400 font-normal mt-2 mb-5"
             >
               {{ reservationSelected.barbershop.about }}
             </p>
-            <LoaderSkeleton v-else class="mb-5" width="100%" height="100px" />
+            <LoaderSkeleton v-else class="w-full h-[100px] mb-5" />
             <div class="border-t border-t-gray-600 mb-5" />
             <div>
               <ul class="w-full flex flex-col gap-3">
@@ -146,10 +141,8 @@
                 <LoaderSkeleton
                   v-else
                   v-for="index in 2"
-                  class="mt-2"
                   :key="index"
-                  width="100%"
-                  height="36px"
+                  class="w-full h-[36px] mt-2"
                 />
               </ul>
             </div>
@@ -204,7 +197,7 @@
                 </li>
               </ul>
             </div>
-            <LoaderSkeleton v-else width="100%" height="194px" />
+            <LoaderSkeleton v-else class="w-full h-[194px]" />
             <div v-if="!useReservations.reservationsLoading">
               <button
                 v-if="reservationsStatus[reservationSelected.status].canCancel"
@@ -221,28 +214,28 @@
                 <span v-else>Cancelar Reserva</span>
               </button>
             </div>
-            <LoaderSkeleton v-else class="mt-5" width="100%" height="36px" />
+            <LoaderSkeleton v-else class="w-full h-[36px] mt-5" />
           </div>
         </div>
-      </div>
-      <div
-        v-if="!hasReservations"
-        class="flex flex-col items-center justify-center gap-4"
-      >
-        <Icon
-          name="ic:round-event-available"
-          size="52"
-          class="text-purple-800"
-        />
-        <p class="text-white font-normal text-2xl">
-          Você ainda não tem reservas.
-        </p>
-        <button
-          class="bg-purple-800 rounded-lg py-2 px-4 text-white font-bold text-sm hover:bg-purple-900 transition-all"
-          @click="router.push('/')"
+        <div
+          v-if="!hasReservations"
+          class="flex flex-col items-center justify-center gap-4"
         >
-          Voltar ao início
-        </button>
+          <Icon
+            name="ic:round-event-available"
+            size="52"
+            class="text-purple-800"
+          />
+          <p class="text-white font-normal text-2xl">
+            Você ainda não tem reservas.
+          </p>
+          <button
+            class="bg-purple-800 rounded-lg py-2 px-4 text-white font-bold text-sm hover:bg-purple-900 transition-all"
+            @click="router.push('/')"
+          >
+            Voltar ao início
+          </button>
+        </div>
       </div>
     </div>
   </div>
