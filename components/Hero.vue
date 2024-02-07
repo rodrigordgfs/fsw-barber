@@ -14,14 +14,19 @@
           </p>
           <p class="text-white font-normal text- mt-1">{{ currentDate }}</p>
           <template #fallback>
-            <LoaderSkeleton width="220px" height="32px" />
-            <LoaderSkeleton class="mt-1" width="300px" height="32px" />
+            <LoaderSkeleton class="w-[220px] h-[32px]" />
+            <LoaderSkeleton class="w-full md:w-[300px] h-[32px] mt-1" />
           </template>
         </ClientOnly>
         <InputSearchBarbershop
           v-if="!useBarbershop.recomendedBarbershopsLoading"
         />
-        <LoaderSkeleton v-else class="mt-12" width="480px" height="36px" />
+        <LoaderSkeleton
+          v-else
+          class="w-full md:w-[480px] h-[36px] mt-12"
+          width="480px"
+          height="36px"
+        />
         <div v-if="!useReservations.lastReservationsLoading">
           <div v-if="hasReservation">
             <p class="uppercase font-bold text-sm text-zinc-400 mt-12 mb-5">
@@ -34,8 +39,8 @@
           </div>
         </div>
         <div v-else class="flex flex-col mt-12">
-          <LoaderSkeleton width="220px" height="20px" />
-          <LoaderSkeleton class="mt-3" width="480px" height="122px" />
+          <LoaderSkeleton class="w-[220px] h-[20px]" />
+          <LoaderSkeleton class="w-full md:w-[480px] h-[122px] mt-3" />
         </div>
       </div>
       <div class="hidden md:block md:w-1/2">
@@ -45,7 +50,7 @@
         >
           Recomendados
         </p>
-        <LoaderSkeleton v-else class="mt-5" width="220px" height="20px" />
+        <LoaderSkeleton v-else class="w-[220px] h-[20px] mt-5" />
         <div class="w-full mt-5 flex flex-row overflow-x-auto">
           <div
             class="flex flex-row whitespace-nowrap gap-4 pb-3 scroll-container-times"
@@ -59,8 +64,7 @@
             <LoaderSkeleton
               v-for="index in 2"
               :key="index"
-              width="269px"
-              height="293px"
+              class="w-[269px] h-[293px]"
             />
           </div>
         </div>
