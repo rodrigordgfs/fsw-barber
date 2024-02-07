@@ -9,7 +9,7 @@
           :src="runtimeConfig.public.bucketUrl + '/' + barbershopImage"
           class="w-full h-48 md:h-96 rounded-lg shadow object-cover"
         />
-        <LoaderSkeleton v-else width="100%" height="384px" />
+        <LoaderSkeleton v-else class="w-full h-[192px] md:h-[384px]" />
         <div class="flex flex-row gap-10 mt-5 items-center">
           <div class="flex-1 flex flex-col gap-3">
             <h1
@@ -18,7 +18,7 @@
             >
               {{ barbershopName }}
             </h1>
-            <LoaderSkeleton v-else width="250px" height="36px" />
+            <LoaderSkeleton v-else class="w-[250px] h-[36px]" />
             <div
               v-if="!useBarbershop.barbershopLoading"
               class="flex flex-row gap-2 items-center"
@@ -32,7 +32,7 @@
                 {{ barbershopAddress }}
               </p>
             </div>
-            <LoaderSkeleton v-else width="280px" height="20px" />
+            <LoaderSkeleton v-else class="w-[280px] h-[20px]" />
           </div>
           <div
             v-if="!useBarbershop.barbershopLoading"
@@ -46,7 +46,7 @@
               {{ ratesQuantity }} avaliações
             </p>
           </div>
-          <LoaderSkeleton v-else width="105px" height="76px" />
+          <LoaderSkeleton v-else class="w-[105px] h-[76px]" />
         </div>
         <div class="flex flex-col gap-3 mt-10">
           <h2
@@ -55,7 +55,7 @@
           >
             Serviços
           </h2>
-          <LoaderSkeleton v-else width="100px" height="20px" />
+          <LoaderSkeleton v-else class="w-[100px] h-[20px]" />
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <CardServices
               v-if="!useBarbershop.barbershopLoading"
@@ -67,8 +67,7 @@
               v-else
               v-for="index in 4"
               :key="index"
-              width="343px"
-              height="138px"
+              class="w-full md:w-[343px] h-[138px]"
             />
           </div>
         </div>
@@ -101,7 +100,7 @@
                 </div>
               </div>
             </div>
-            <LoaderSkeleton v-else width="333px" height="176px" />
+            <LoaderSkeleton v-else class="w-full h-[176px]" />
           </div>
           <p
             v-if="!useBarbershop.barbershopLoading"
@@ -109,19 +108,14 @@
           >
             Sobre Nós
           </p>
-          <LoaderSkeleton
-            v-else
-            class="mt-4 mb-5"
-            width="100px"
-            height="20px"
-          />
+          <LoaderSkeleton v-else class="w-[100px] h-[20px] mt-4 mb-5" />
           <p
             v-if="!useBarbershop.barbershopLoading"
             class="text-sm text-gray-400 font-normal mt-2 mb-5"
           >
             {{ barbershopAbout }}
           </p>
-          <LoaderSkeleton v-else class="mb-5" width="100%" height="100px" />
+          <LoaderSkeleton v-else class="w-full h-[100px] mb-5" />
           <div class="border-t border-t-gray-600 mb-5" />
           <div>
             <ul class="w-full flex flex-col gap-3">
@@ -151,10 +145,8 @@
               <LoaderSkeleton
                 v-else
                 v-for="index in 2"
-                class="mt-2"
+                class="w-full h-[36px] mt-2"
                 :key="index"
-                width="100%"
-                height="36px"
               />
             </ul>
           </div>
@@ -180,10 +172,8 @@
               <LoaderSkeleton
                 v-else
                 v-for="index in 7"
-                class="mt-2"
                 :key="index"
-                width="100%"
-                height="20px"
+                class="w-full h-[20px] mt-2"
               />
             </ul>
           </ul>
